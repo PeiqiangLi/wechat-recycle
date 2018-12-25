@@ -14,9 +14,15 @@ public class Admin implements Serializable {
 
     Integer id;
 
+    String mobile;
+
+    String email;
+
     String username;
 
     String password;
+
+    Integer delFlag;
 
     public Integer getId() {
         return id;
@@ -24,6 +30,22 @@ public class Admin implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -40,5 +62,13 @@ public class Admin implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
     }
 }
