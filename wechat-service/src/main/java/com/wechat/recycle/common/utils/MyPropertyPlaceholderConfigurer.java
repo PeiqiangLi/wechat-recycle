@@ -22,12 +22,9 @@ public class MyPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigur
     protected void processProperties(ConfigurableListableBeanFactory beanFactory, Properties props)
             throws BeansException {
         List<String> propNames = new ArrayList<>();
-        propNames.add("jdbc.username");
-        propNames.add("jdbc.password");
-        propNames.add("jdbc.url");
-        propNames.add("jdbc.driverClassName");
-        propNames.add("email.emailAccount");
-        propNames.add("email.emailPassword");
+        propNames.add("spring.datasource.username");
+        propNames.add("spring.datasource.password");
+        propNames.add("spring.datasource.url");
 
         try {
             for (String name : propNames) {

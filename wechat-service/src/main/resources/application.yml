@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dev
+
+server:
+  port: 8088
+  servlet:
+    context-path: /recycle-api-web
+  tomcat:
+    uri-encoding: UTF-8
+
+mybatis:
+#  ±ðÃû
+#  typeAliasesPackage:
+  mapperLocations: classpath:mapper/*

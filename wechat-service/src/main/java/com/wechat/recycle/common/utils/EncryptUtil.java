@@ -303,9 +303,9 @@ public class EncryptUtil{
     }
 
     public static void main(String[] args) {
-        String test = encryptHex("test", "1234567800000000");
+/*        String test = encryptHex("test", "1234567800000000");
         System.out.println(test);
-
-        System.out.println(decryptHex(test, "1234567800000000"));
+        System.out.println(decryptHex(test, "1234567800000000"));*/
+//        System.out.println(encryptHex("test", "12345678"));
     }
 }
