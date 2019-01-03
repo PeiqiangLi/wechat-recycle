@@ -10,6 +10,6 @@ server:
     uri-encoding: UTF-8
 
 mybatis:
-#  ±ğÃû
+#  å–åˆ«å
 #  typeAliasesPackage:
   mapperLocations: classpath:mapper/*

@@ -1,6 +1,7 @@
 package com.wechat.recycle.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author: PeiqiangLi
@@ -23,6 +24,10 @@ public class Admin implements Serializable {
     String password;
 
     Integer delFlag;
+
+    Date createTime;
+
+    Date updateTime;
 
     public Integer getId() {
         return id;
@@ -70,5 +75,21 @@ public class Admin implements Serializable {
 
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
