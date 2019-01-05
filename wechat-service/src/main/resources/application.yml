@@ -13,3 +13,7 @@ mybatis:
 #  取别名
 #  typeAliasesPackage:
   mapperLocations: classpath:mapper/*
+
+jasypt:
+  encryptor:
+    password: EbfYkitulv73I2p0mXI50JMCoaxZTPJ7
