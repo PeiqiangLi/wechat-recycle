@@ -10,9 +10,9 @@ server:
     uri-encoding: UTF-8
 
 mybatis:
-#  取别名
-#  typeAliasesPackage:
-  mapperLocations: classpath:mapper/*
+#  数据库映射实体类路径
+#  typeAliasesPackage: com.wechat.recycle.entity
+  mapperLocations: classpath:mapper/*.xml
 
 jasypt:
   encryptor:
