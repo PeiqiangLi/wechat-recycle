@@ -1,5 +1,6 @@
 spring:
   datasource:
-    url: ccjadclBswNXmbmrq/Cv4hthXKr7zUB7Q3lJ57maY/6ujStdZUsLdM+iIzDsfS915NK6KN5Y5iCpyTXbuXHckrNLaHP25dFsV0isIta6ObcBsTeR7yfBdM5LMA5yjuhKR8Rzuv3Bg6PEX1TlaTBbMw==
+    url: ag2ACy4WE/h2QdFjpeU6pEYCYgAEHORzes5sQmNdYRFzWhi72WBWI7oe7a9CiBnRutLqnxD8DbVVqLAU/lfNXdkXMKBRhbKuUM24xOx0ABbk5FrKL+kbZPkouCJyU0hsUOEPGwRAqej87ROolXZeOw==
     username: zeIemFUllmqAl7dRk5lm/A==
     password: hrTp8hITCP1MLSsw1IeyzKnT6YydVkXG
+    driver-class-name: com.mysql.cj.jdbc.Driver

@@ -8,11 +8,11 @@
         select * from `user` where id = #{id}
     </select>
 
-    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
+<!--    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
             parameterType="com.wechat.recycle.entity.User">
         insert into
         `user` ()
         values (#{},#{})
-    </insert>
+    </insert>-->
 
 </mapper>
