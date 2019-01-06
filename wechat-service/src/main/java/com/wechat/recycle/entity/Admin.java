@@ -23,7 +23,7 @@ public class Admin implements Serializable {
 
     String password;
 
-    Integer delFlag;
+    String delFlag;
 
     Date createTime;
 
@@ -69,11 +69,11 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
-    public Integer getDelFlag() {
+    public String getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
     }
 

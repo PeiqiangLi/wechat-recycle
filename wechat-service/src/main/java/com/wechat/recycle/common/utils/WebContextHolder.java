@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Locale;
 
+//用于在service获取http请求上下文
 public final class WebContextHolder {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebContextHolder.class);
 

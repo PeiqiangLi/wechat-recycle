@@ -30,10 +30,10 @@ public class User implements Serializable {
     /*头像路径*/
     String iconUrl;
 
-    /*角色权限*/
-    Integer roleType;
+    /*角色权限：1-普通用户 2-回收员*/
+    String roleType;
 
-    Integer delFlag;
+    String delFlag;
 
     Date createTime;
 
@@ -103,19 +103,19 @@ public class User implements Serializable {
         this.iconUrl = iconUrl;
     }
 
-    public Integer getRoleType() {
+    public String getRoleType() {
         return roleType;
     }
 
-    public void setRoleType(Integer roleType) {
+    public void setRoleType(String roleType) {
         this.roleType = roleType;
     }
 
-    public Integer getDelFlag() {
+    public String getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
     }
 
