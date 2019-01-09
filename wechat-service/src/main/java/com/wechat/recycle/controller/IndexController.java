@@ -20,4 +20,10 @@ public class IndexController {
         return userService.selectOne(1);
     }
 
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    public Integer addUser(User user) {
+
+        return 0;
+    }
+
 }
