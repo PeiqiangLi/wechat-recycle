@@ -4,6 +4,10 @@ const app = getApp()
 
 Page({
   data: {
+    isSigin: false,
+    channel: '',
+    // 授权登录
+    authSuccess: true,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
