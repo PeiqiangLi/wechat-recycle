@@ -18,10 +18,10 @@ public enum StatusCodeEnum {
     // 其他CODE 2000 - 2999
 
     private String code;
-    private String message;
+    private String Msg;
     StatusCodeEnum(String code,String message){
         this.code = code;
-        this.message = message;
+        this.Msg = message;
     }
 
     public String getCode() {
@@ -32,11 +32,11 @@ public enum StatusCodeEnum {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return Msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String message) {
+        this.Msg = message;
     }
 }
