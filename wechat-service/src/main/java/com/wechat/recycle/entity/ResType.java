@@ -1,24 +1,25 @@
 package com.wechat.recycle.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ResType {
+public class ResType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    Integer id;
+    private Integer id;
 
     /*类别名称*/
-    String name;
+    private String name;
 
     /*种类图标*/
-    String iconUrl;
+    private String iconUrl;
 
-    String delFlag;
+    private String delFlag;
 
-    Date createTime;
+    private Date createTime;
 
-    Date updateTime;
+    private Date updateTime;
 
     public Integer getId() {
         return id;

@@ -13,31 +13,35 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    Integer id;
+    private Integer id;
 
-    String mobile;
+    private String openid;
 
-    String email;
+    private String unionid;
 
-    String username;
+    private String mobile;
 
-    String realname;
+    private String email;
 
-    String password;
+    private String username;
 
-    String address;
+    private String realname;
+
+    private String password;
+
+    private String address;
 
     /*头像路径*/
-    String iconUrl;
+    private String iconUrl;
 
     /*角色权限：1-普通用户 2-回收员*/
-    String roleType;
+    private String roleType;
 
-    String delFlag;
+    private String delFlag;
 
-    Date createTime;
+    private Date createTime;
 
-    Date updateTime;
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -45,6 +49,22 @@ public class User implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
+
+    public String getUnionid() {
+        return unionid;
+    }
+
+    public void setUnionid(String unionid) {
+        this.unionid = unionid;
     }
 
     public String getMobile() {

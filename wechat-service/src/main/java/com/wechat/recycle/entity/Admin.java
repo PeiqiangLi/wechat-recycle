@@ -13,21 +13,21 @@ public class Admin implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    Integer id;
+    private Integer id;
 
-    String mobile;
+    private String mobile;
 
-    String email;
+    private String email;
 
-    String username;
+    private String username;
 
-    String password;
+    private String password;
 
-    String delFlag;
+    private String delFlag;
 
-    Date createTime;
+    private Date createTime;
 
-    Date updateTime;
+    private Date updateTime;
 
     public Integer getId() {
         return id;
