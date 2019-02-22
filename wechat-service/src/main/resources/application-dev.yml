@@ -5,5 +5,4 @@ spring:
     password: ENC(hrTp8hITCP1MLSsw1IeyzKnT6YydVkXG)
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
-    host: ENC(127.0.0.1)
-    password: ENC()
+    host: ENC(MdjW9OCCSSRhgxKxzGtDbdosqdzTOYq9)

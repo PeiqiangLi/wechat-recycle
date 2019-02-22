@@ -23,9 +23,9 @@ public class User implements Serializable {
 
     private String email;
 
-    private String username;
+    private String nickName;
 
-    private String realname;
+    private String realName;
 
     private String password;
 
@@ -83,20 +83,20 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public String getRealname() {
-        return realname;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setRealname(String realname) {
-        this.realname = realname;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getPassword() {
