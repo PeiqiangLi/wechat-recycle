@@ -8,6 +8,10 @@
         select * from `user` where id = #{id}
     </select>
 
+    <select id="selectByOpenid" resultType="com.wechat.recycle.entity.User">
+        select id,openid,mobile,email,nick_name,real_name,address,role_type from `user` where openid = #{openid}
+    </select>
+
 <!--    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
             parameterType="com.wechat.recycle.entity.User">
         insert into

@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectOne(id);
     }
 
+    @Override
+    public User selectByOpenid(String openid) {
+        return userMapper.selectByOpenid(openid);
+    }
+
 }

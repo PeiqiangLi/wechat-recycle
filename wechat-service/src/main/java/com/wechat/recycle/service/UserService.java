@@ -11,4 +11,6 @@ public interface UserService {
      */
     User selectOne(Integer id);
 
+    User selectByOpenid(String openid);
+
 }

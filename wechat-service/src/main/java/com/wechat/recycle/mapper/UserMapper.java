@@ -7,15 +7,22 @@ public interface UserMapper {
 
     /**
      * 查询一条用户信息
-     * @param id
-     * @return
+     * @param id 用户id
+     * @return User
      */
     User selectOne(Integer id);
 
     /**
+     * 根据openid查询
+     * @param openid 用户openid
+     * @return User
+     */
+    User selectByOpenid(String openid);
+
+    /**
      * 新增用户
-     * @param user
-     * @return
+     * @param user 用户信息
+     * @return int
      */
     int addUser(User user);
 
