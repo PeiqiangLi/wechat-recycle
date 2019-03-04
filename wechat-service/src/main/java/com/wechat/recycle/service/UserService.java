@@ -13,4 +13,8 @@ public interface UserService {
 
     User selectByOpenid(String openid);
 
+    int addUser(User user);
+
+    int updateUser(User user);
+
 }

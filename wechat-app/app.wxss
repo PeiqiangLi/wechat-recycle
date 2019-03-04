@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import '/weui.wxss';
+
 .container {
   height: 100%;
   display: flex;
@@ -8,3 +10,27 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.divLine {
+  width: 100%;
+  height: 28rpx;
+}
+
+page{
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+/* .my-cells{
+  background-color:#fff;
+  border-top: 1rpx solid;
+  border-bottom: 1rpx solid;
+  border-color: #F8F8F8;
+  line-height: 60rpx;
+}
+
+.my-cell{padding:10px 15px;position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}
+
+.my-cell:before{content:" ";position:absolute;left:0;top:0;right:0;height:1px;border-top:1rpx solid #F8F8F8;color:#d9d9d9;left:15px}.my-cell:first-child:before{display:none} */
+

@@ -19,8 +19,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectByOpenid(String openid) {
-        return userMapper.selectByOpenid(openid);
+    public User selectByOpenid(String openId) {
+        return userMapper.selectByOpenid(openId);
+    }
+
+    @Override
+    public int addUser(User user) {
+        return userMapper.addUser(user);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
     }
 
 }

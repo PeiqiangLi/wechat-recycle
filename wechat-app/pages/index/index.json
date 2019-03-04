@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "智源回收",
+  "enablePullDownRefresh": true
 }

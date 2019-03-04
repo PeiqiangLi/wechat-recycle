@@ -9,14 +9,26 @@
     </select>
 
     <select id="selectByOpenid" resultType="com.wechat.recycle.entity.User">
-        select id,openid,mobile,email,nick_name,real_name,address,role_type from `user` where openid = #{openid}
+        select id,mobile,email,nick_name,real_name,address_id,avatar_url,role_type from `user` where openId = #{openId}
     </select>
 
-<!--    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
+    <update id="updateUser" parameterType="">
+        update `user`
+        <trim prefix="set" suffixOverrides=",">real_name
+            <if test="mobile != null">mobile = #{mobile},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="realName != null">real_name = #{realName},</if>
+            <if test="nickName != null">nick_name = #{nickName},</if>
+            <if test="avatarUrl != null">avatar_url = #{avatarUrl}</if>
+        </trim>
+        where openId = #{openId}
+    </update>
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
             parameterType="com.wechat.recycle.entity.User">
         insert into
-        `user` ()
-        values (#{},#{})
-    </insert>-->
+        `user` (open_id,union_id,nick_name,avatar_url)
+        values (#{openId},#{unionId},#{nick_name},#{avatar_url})
+    </insert>
 
 </mapper>

@@ -15,9 +15,9 @@ public class User implements Serializable {
 
     private Integer id;
 
-    private String openid;
+    private String openId;
 
-    private String unionid;
+    private String unionId;
 
     private String mobile;
 
@@ -27,12 +27,10 @@ public class User implements Serializable {
 
     private String realName;
 
-    private String password;
-
-    private String address;
+    private String addressId;
 
     /*头像路径*/
-    private String iconUrl;
+    private String avatarUrl;
 
     /*角色权限：1-普通用户 2-回收员*/
     private String roleType;
@@ -51,20 +49,20 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getOpenid() {
-        return openid;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setOpenid(String openid) {
-        this.openid = openid;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
-    public String getUnionid() {
-        return unionid;
+    public String getUnionId() {
+        return unionId;
     }
 
-    public void setUnionid(String unionid) {
-        this.unionid = unionid;
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
     }
 
     public String getMobile() {
@@ -99,28 +97,20 @@ public class User implements Serializable {
         this.realName = realName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAddressId() {
+        return addressId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getIconUrl() {
-        return iconUrl;
-    }
-
-    public void setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getRoleType() {

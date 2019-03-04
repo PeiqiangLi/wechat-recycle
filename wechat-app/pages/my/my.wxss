@@ -1,1 +1,20 @@
 /* pages/my/my.wxss */
+@import '/weui.wxss';
+
+.background{
+  border-top: 1rpx solid #F8F8F8;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  background-color: #fff;
+}
+
+.avatar{
+  height: 150rpx;
+  width: 150rpx;
+  border-radius: 50%;
+  margin: 20rpx 20rpx 20rpx 50rpx;
+}
+
+
+

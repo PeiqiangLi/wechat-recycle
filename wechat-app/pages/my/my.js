@@ -1,18 +1,26 @@
 // pages/my/my.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {},
+    icon1: '/images/dianpu.png',
+    icon2: '/images/qianbao.png',
+    icon3: '/images/ditudingwei.png',
+    icon4: '/images/yiduiqian.png'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
   },
 
   /**

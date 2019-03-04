@@ -13,11 +13,11 @@ public interface UserMapper {
     User selectOne(Integer id);
 
     /**
-     * 根据openid查询
-     * @param openid 用户openid
+     * 根据openId查询
+     * @param openId 用户openId
      * @return User
      */
-    User selectByOpenid(String openid);
+    User selectByOpenid(String openId);
 
     /**
      * 新增用户
@@ -26,6 +26,11 @@ public interface UserMapper {
      */
     int addUser(User user);
 
+    /**
+     * 更新用户
+     * @param user 用户信息
+     * @return int
+     */
     int updateUser(User user);
 
 }
