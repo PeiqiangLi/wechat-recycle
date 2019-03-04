@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.recycle.mapper.AddressMapper">
+
+    <select id="selectOne" resultType="com.wechat.recycle.entity.Address">
+        select * from address where id = #{id}
+    </select>
+
+    <insert id="addAddress" parameterType="com.wechat.recycle.entity.Address" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO address
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            province, city, area, address, latitude, longitude,
+            del_flag, create_time, update_time
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            #{province,jdbcType=VARCHAR},
+            #{city,jdbcType=VARCHAR},
+            #{area,jdbcType=VARCHAR},
+            #{address,jdbcType=VARCHAR},
+            #{latitude,jdbcType=DOUBLE},
+            #{longitude,jdbcType=DOUBLE},
+            "1",NOW(),NOW()
+        </trim>
+    </insert>
+
+    <update id="updateAddress">
+        UPDATE address
+        <set>
+            <if test="province !=null">
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null">
+                area = #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DOUBLE},
+            </if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER} AND del_flag="1"
+    </update>
+
+    <update id="deleteOne">
+        UPDATE address
+        <set>
+            del_flag = "0",
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>
