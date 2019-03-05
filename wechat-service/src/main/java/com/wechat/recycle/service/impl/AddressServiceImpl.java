@@ -26,7 +26,9 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public int addAddress(Address address) {
-        return addressMapper.addAddress(address);
+        addressMapper.addAddress(address);
+        // 返回地址id
+        return address.getId();
     }
 
     @Override

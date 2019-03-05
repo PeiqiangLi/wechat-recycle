@@ -1,10 +1,11 @@
 package com.wechat.recycle.controller;
 
-import com.wechat.recycle.common.utils.Result;
-import com.wechat.recycle.common.utils.ResultUtil;
-import com.wechat.recycle.common.utils.StatusCodeEnum;
+import com.alibaba.fastjson.JSONObject;
+import com.wechat.recycle.common.utils.*;
 import com.wechat.recycle.entity.Address;
+import com.wechat.recycle.entity.User;
 import com.wechat.recycle.service.AddressService;
+import com.wechat.recycle.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +25,14 @@ public class AddressController {
     @Resource
     private AddressService addressService;
 
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private RedisUtil redisUtil;
+
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)
-    public Result addAddress(Address address) {
+    public Result addAddress(Address address, String sessionId) {
         if (address.getAddress() == null || address.getAddress() == "") {
             // 要求前端去掉最后面的空格
             return ResultUtil.error("1003","详细地址为空");
@@ -42,8 +49,15 @@ public class AddressController {
         else if (address.getLatitude() == null || address.getLongitude() == null) {
             return ResultUtil.error("1003","经度/纬度异常");
         }
-        int count = addressService.addAddress(address);
-        if (count <= 0) return ResultUtil.error("1002","新增地址失败");
+        int id = addressService.addAddress(address);
+        if (id <= 0) return ResultUtil.error("1002","新增地址失败");
+        User user = new User();
+        user.setAddressId(id);
+        String openId =  SessionUtil.getSessionInfo(sessionId, "openId");
+        if (openId == null){
+            return ResultUtil.error(StatusCodeEnum.USER_UNLOGIN);
+        }
+        userService.updateUserAddress(id, SessionUtil.getSessionInfo(sessionId, "openId"));
         return ResultUtil.success();
     }
 

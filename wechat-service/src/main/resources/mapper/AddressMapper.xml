@@ -8,7 +8,7 @@
         select * from address where id = #{id}
     </select>
 
-    <insert id="addAddress" parameterType="com.wechat.recycle.entity.Address" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addAddress" parameterType="com.wechat.recycle.entity.Address" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
         INSERT INTO address
         <trim prefix="(" suffix=")" suffixOverrides=",">
             province, city, area, address, latitude, longitude,
@@ -25,7 +25,7 @@
         </trim>
     </insert>
 
-    <update id="updateAddress">
+    <update id="updateAddress" parameterType="com.wechat.recycle.entity.Address">
         UPDATE address
         <set>
             <if test="province !=null">

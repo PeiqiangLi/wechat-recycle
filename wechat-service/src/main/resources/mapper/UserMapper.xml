@@ -26,6 +26,15 @@
         where openId = #{openId}
     </update>
 
+    <update id="updateUserAddress">
+        update `user`
+        <trim prefix="set" suffixOverrides=",">
+            <if test="addressId != null">address_id = #{addressId},</if>
+            update_time = NOW()
+        </trim>
+        where openId = #{openId}
+    </update>
+
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
             parameterType="com.wechat.recycle.entity.User">
         insert into `user`

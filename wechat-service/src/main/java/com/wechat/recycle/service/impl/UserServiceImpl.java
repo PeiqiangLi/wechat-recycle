@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateUser(user);
     }
 
+    @Override
+    public int updateUserAddress(Integer addressId, String openId) {
+        return userMapper.updateUserAddress(addressId, openId);
+    }
+
 }

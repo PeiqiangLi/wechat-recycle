@@ -32,4 +32,12 @@ public interface UserMapper {
      */
     int updateUser(User user);
 
+    /**
+     * @Author: PeiqiangLi
+     * @Description: 更新用户地址id
+     * @param:
+     * @Date: 2019/3/5 15:13
+     */
+    int updateUserAddress(Integer addressId, String openId);
+
 }

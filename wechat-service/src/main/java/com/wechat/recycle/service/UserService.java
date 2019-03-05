@@ -17,4 +17,6 @@ public interface UserService {
 
     int updateUser(User user);
 
+    int updateUserAddress(Integer addressId, String openId);
+
 }

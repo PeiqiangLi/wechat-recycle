@@ -1,10 +1,10 @@
 package com.wechat.recycle.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wechat.recycle.common.httpclient.HttpUtils;
 import com.wechat.recycle.common.utils.RedisUtil;
 import com.wechat.recycle.common.utils.Result;
 import com.wechat.recycle.common.utils.ResultUtil;
+import com.wechat.recycle.common.utils.SessionUtil;
 import com.wechat.recycle.entity.User;
 import com.wechat.recycle.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -51,7 +50,7 @@ public class IndexController {
         //用户不存在或用户登录已经失效
         if (sessionId == null || redisUtil.get(sessionId) == null){
             //重新获取openid,sessionKey
-            JSONObject json = getSessionKey(code);
+            JSONObject json = SessionUtil.getSessionKey(code);
             if (json == null) {
                 return ResultUtil.error("1002","获取sessionKey失败");
             }
@@ -83,22 +82,10 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public Result index() {
+        Map<String, String> map = new HashMap<>();
+        map.put("aa","nihao");
+        map.put("bb", "hello world");
         return ResultUtil.success("hello world");
-    }
-
-    private static JSONObject getSessionKey(String code) {
-        Map<String,String> map = new HashMap<>();
-        map.put("appid","wxbab581961ef84ef7");
-        map.put("secret","cc17ccc501c94fc2e797c245a0dee29d");
-        map.put("js_code",code);
-        map.put("grant_type","authorization_code");
-        try {
-            JSONObject json = JSONObject.parseObject(HttpUtils.doGet("https://api.weixin.qq.com/sns/jscode2session",map));
-            return json;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 }

@@ -27,7 +27,7 @@ public class User implements Serializable {
 
     private String realName;
 
-    private String addressId;
+    private Integer addressId;
 
     /*头像路径*/
     private String avatarUrl;
@@ -97,11 +97,11 @@ public class User implements Serializable {
         this.realName = realName;
     }
 
-    public String getAddressId() {
+    public Integer getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(String addressId) {
+    public void setAddressId(Integer addressId) {
         this.addressId = addressId;
     }
 
