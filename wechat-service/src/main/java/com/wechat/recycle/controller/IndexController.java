@@ -7,7 +7,6 @@ import com.wechat.recycle.common.utils.Result;
 import com.wechat.recycle.common.utils.ResultUtil;
 import com.wechat.recycle.entity.User;
 import com.wechat.recycle.service.UserService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +42,7 @@ public class IndexController {
         } else {
             userService.addUser(user);
         }
-        //通过判断用户信息是否是null来证明用户有效性
+        // 通过判断用户信息是否是null来证明用户有效性
         return ResultUtil.success();
     }
 
@@ -59,11 +58,11 @@ public class IndexController {
             if (json.getIntValue("errcode") != 0){
                 return ResultUtil.error(String.valueOf(json.getIntValue("errcode")),json.getString("errmsg"));
             }
-            //用户唯一标识
+            // 用户唯一标识
             String openId = json.getString("openid");
-            //会话密钥
+            // 会话密钥
             String sessionKey = json.getString("session_key");
-            //用户在开放平台的唯一标识符，在满足 UnionID 下发条件的情况下会返回，详见 UnionID 机制说明。
+            // 用户在开放平台的唯一标识符，在满足 UnionID 下发条件的情况下会返回，详见 UnionID 机制说明。
             String unionId = json.getString("unionid");
             // 生成新的sessionId
             sessionId = UUID.randomUUID().toString();
@@ -72,11 +71,13 @@ public class IndexController {
             jsonObject.put("openId",openId);
             jsonObject.put("sessionKey",sessionKey);
             jsonObject.put("unionId",unionId);
-            //将openid,sessionKey存入redis
+            //将json对象存入redis
             redisUtil.set(sessionId,jsonObject,86400);
             return ResultUtil.success(sessionId);
         }
-        //用户已存在直接返回openId
+        // 刷新用户sessionId过期时间
+        redisUtil.expire(sessionId,86400);
+        // 用户已存在直接返回sessionId
         return ResultUtil.success(sessionId);
     }
 

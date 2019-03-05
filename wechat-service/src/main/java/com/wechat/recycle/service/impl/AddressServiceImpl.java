@@ -19,24 +19,23 @@ public class AddressServiceImpl implements AddressService {
     @Resource
     private AddressMapper addressMapper;
 
-
     @Override
     public Address selectOne(Integer id) {
-        return null;
+        return addressMapper.selectOne(id);
     }
 
     @Override
     public int addAddress(Address address) {
-        return 0;
+        return addressMapper.addAddress(address);
     }
 
     @Override
     public int updateAddress(Address address) {
-        return 0;
+        return addressMapper.updateAddress(address);
     }
 
     @Override
     public int deleteOne(Integer id) {
-        return 0;
+        return addressMapper.deleteOne(id);
     }
 }

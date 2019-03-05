@@ -17,9 +17,13 @@ public class userController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public Result getUserInfo(User user) {
-
+    @RequestMapping(value = "/changeUserRole", method = RequestMethod.GET)
+    public Result changeUserRole(String openId, String roleType) {
+        User user = new User();
+        user.setOpenId(openId);
+        user.setRoleType(roleType);
+        int count = userService.updateUser(user);
+        if (count <= 0) return ResultUtil.error("1002","修改用户类别失败");
         return ResultUtil.success();
     }
 
