@@ -1,7 +1,6 @@
 package com.wechat.recycle.mapper;
 
 import com.wechat.recycle.entity.User;
-import org.apache.ibatis.annotations.Mapper;
 
 public interface UserMapper {
 

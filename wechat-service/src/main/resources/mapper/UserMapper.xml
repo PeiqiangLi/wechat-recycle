@@ -12,7 +12,7 @@
         select id,mobile,email,nick_name,real_name,address_id,avatar_url,role_type from `user` where openId = #{openId}
     </select>
 
-    <update id="updateUser" parameterType="">
+    <update id="updateUser" parameterType="com.wechat.recycle.entity.User">
         update `user`
         <trim prefix="set" suffixOverrides=",">real_name
             <if test="mobile != null">mobile = #{mobile},</if>
