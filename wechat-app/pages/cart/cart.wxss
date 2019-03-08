@@ -1,1 +1,12 @@
 /* pages/cart/cart.wxss */
+
+.cart-cell{
+  position: fixed;
+  background-color: #8699a4;
+  padding: 8px 20px 8px 20px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 100%;
+}
+

@@ -1,5 +1,4 @@
 /* pages/my/my.wxss */
-@import '/weui.wxss';
 
 .background{
   border-top: 1rpx solid #F8F8F8;

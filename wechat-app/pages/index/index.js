@@ -9,10 +9,18 @@ Page({
    */
   data: {
     imgUrls: [
-      '/images/aaaa.jpg',
-      '/images/aaaa.jpg',
-      '/images/aaaa.jpg'
+      '/images/banner/aaaa.png',
+      '/images/banner/bbbb.png',
+      '/images/banner/cccc.png'
     ],
+    img1: '/images/types/kuzi.png',
+    img2: '/images/types/yinliao.png',
+    img3: '/images/types/newspaper.png',
+    img4: '/images/types/battery.png',
+    img5: '/images/types/dianshiji.png',
+    img6: '/images/types/ziyuan.png',
+    img7: '/images/types/ershouche.png',
+    img8: '/images/types/all.png',
     indicatorDots: true,
     autoplay: true,
     interval: 5000,

@@ -5,7 +5,8 @@
     "pages/cart/cart",
     "pages/my/my",
     "pages/logs/logs",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -15,7 +16,7 @@
     "backgroundColor": "#f8f8f8"
   },
   "networkTimeout": {
-    "request": 10000
+    "request": 60000
   },
   "tabBar": {
     "color": "#a9b7b7",
@@ -23,20 +24,20 @@
     "borderStyle": "black",
     "list": [
       {
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_select.png",
+        "iconPath": "/images/tabBar/home.png",
+        "selectedIconPath": "/images/tabBar/home_select.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "iconPath": "/images/cart.png",
-        "selectedIconPath": "/images/cart_select.png",
+        "iconPath": "/images/tabBar/cart.png",
+        "selectedIconPath": "/images/tabBar/cart_select.png",
         "pagePath": "pages/cart/cart",
         "text": "购物车"
       },
       {
-        "iconPath": "/images/my.png",
-        "selectedIconPath": "/images/my_select.png",
+        "iconPath": "/images/tabBar/my.png",
+        "selectedIconPath": "/images/tabBar/my_select.png",
         "pagePath": "pages/my/my",
         "text": "我的"
       }

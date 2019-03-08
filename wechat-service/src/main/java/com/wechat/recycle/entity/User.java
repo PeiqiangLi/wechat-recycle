@@ -17,8 +17,6 @@ public class User implements Serializable {
 
     private String openId;
 
-    private String unionId;
-
     private String mobile;
 
     private String email;
@@ -55,14 +53,6 @@ public class User implements Serializable {
 
     public void setOpenId(String openId) {
         this.openId = openId;
-    }
-
-    public String getUnionId() {
-        return unionId;
-    }
-
-    public void setUnionId(String unionId) {
-        this.unionId = unionId;
     }
 
     public String getMobile() {

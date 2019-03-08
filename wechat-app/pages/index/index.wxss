@@ -1,32 +1,46 @@
 /*index.wxss*/
+.slide{
+  margin: 0rpx 10rpx 0rpx 10rpx;
+  border-radius: 6px; 
+  height: 150px;
+}
 .slide-image {
   width: 100%;
-  height: 150px;
+  height: 100%;
+  border-radius: 6px; 
 }
 
 .content {
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
+  margin: 10rpx 0rpx 10rpx 0rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  margin: 10rpx 10rpx 10rpx 10rpx;
-  background-color: #fff;
 }
 
-.imgBox {
-  padding: 10rpx,10rpx,10rpx,10rpx;
-  flex:1;
+.content-box{
+  text-align: center;
+  background-color: #fff;
+  flex-grow: 1;
+  flex-basis: 0;
+  margin: 0rpx 5rpx 0rpx 5rpx;
+  padding-top: 10rpx;
   height:160rpx;
 }
 
-.divLine {
-  background: red;
+.imgBox {
+  width: 100rpx;
+  height:100rpx;
+}
+
+.text_line{
+  text-align: center;
+  color: #999;
   width: 100%;
-  height: 30rpx;
 }
 
 .article {
-  margin: 30rpx 30rpx 10rpx 30rpx;
+  margin: 10rpx 30rpx 10rpx 30rpx;
   background-color: #fff;
   height: 210px;
   border-radius: 6px;

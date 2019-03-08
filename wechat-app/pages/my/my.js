@@ -8,10 +8,10 @@ Page({
    */
   data: {
     userInfo: {},
-    icon1: '/images/dianpu.png',
-    icon2: '/images/qianbao.png',
-    icon3: '/images/ditudingwei.png',
-    icon4: '/images/yiduiqian.png'
+    icon1: '/images/myCenter/dianpu.png',
+    icon2: '/images/myCenter/qianbao.png',
+    icon3: '/images/myCenter/ditudingwei.png',
+    icon4: '/images/myCenter/yiduiqian.png'
   },
 
   /**

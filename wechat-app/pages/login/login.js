@@ -66,19 +66,27 @@ Page({
       // 保存用户信息
       wx.request({
         url: app.globalData.url + '/main/getUserInfo',
-        data: {
-          user: e.detail.userInfo,
-          encryptedData: e.detail.iv,
-          sessionId: wx.getStorageSync('sessionId')
+        method: "POST",
+        header: {
+          "content-type": "application/json",
+          "sessionId": wx.getStorageSync('sessionId'),
+          "encryptedData": e.detail.encryptedData,
+          "iv": e.detail.iv
         },
+        data: e.detail.userInfo,
         success: res => {
-          console.log(res.code + res.msg);
+          res = res.data
+          console.log(res);
+          // 跳转进首页
+          if (res.code == "0000") {
+            wx.switchTab({
+              url: '/pages/index/index'
+            })
+          }
+          
         }
       })
-      // 跳转进首页
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
+      // 
     } else {
       wx.showModal({
         title: '警告',

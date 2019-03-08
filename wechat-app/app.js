@@ -18,9 +18,9 @@ App({
               sessionId: wx.getStorageSync('sessionId')
             },
             success: res => {
-              console.log(res.code + res.msg)
               res = res.data
-              wx.setStorageSync('sessionId', res.sessionId)
+              console.log(res)
+              wx.setStorageSync('sessionId', res.data)
             }
           })
         } else {
