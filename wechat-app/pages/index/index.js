@@ -8,11 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      '/images/banner/aaaa.png',
-      '/images/banner/bbbb.png',
-      '/images/banner/cccc.png'
-    ],
+    imgUrls: [],
     img1: '/images/types/kuzi.png',
     img2: '/images/types/yinliao.png',
     img3: '/images/types/newspaper.png',
@@ -38,7 +34,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: app.globalData.url + '/banner/getUsedBanners',
+      success: res => {
+        res = res.data
+        console.log(res.data);
+        var img_url = new Array();
+        for (var index in res.data) {
+          img_url.push(res.data[index].imgUrl);
+          //this.data.imgUrls[index] = res.data[index].imgUrl
+        }
+        this.setData({
+          imgUrls: img_url
+        })
+        console.log(this.data.imgUrls);
+      }
+    })
   },
 
   /**

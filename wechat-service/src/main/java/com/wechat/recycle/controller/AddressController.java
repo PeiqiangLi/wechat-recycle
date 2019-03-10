@@ -31,6 +31,17 @@ public class AddressController {
     @Resource
     private RedisUtil redisUtil;
 
+    @RequestMapping(value = "/getAddress")
+    public Result getAddress(String sessionId) {
+//        String openId =  SessionUtil.getSessionInfo(sessionId, "openId");
+//        if (openId == null){
+//            return ResultUtil.error(StatusCodeEnum.USER_UNLOGIN);
+//        }
+        User user = userService.selectOne(1);
+        System.out.println(JSONObject.toJSONString(user));
+        return ResultUtil.success(user);
+    }
+
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)
     public Result addAddress(Address address, String sessionId) {
         if (address.getAddress() == null || address.getAddress() == "") {

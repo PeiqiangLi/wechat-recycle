@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.wechat.recycle.common.utils.*;
 import com.wechat.recycle.entity.User;
 import com.wechat.recycle.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -53,7 +54,7 @@ public class IndexController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public Result login(String code, String sessionId) {
         //用户不存在或用户登录已经失效
-        if (sessionId == null || "".equals(sessionId) || redisUtil.get(sessionId) == null){
+        if (StringUtils.isEmpty(sessionId) || redisUtil.get(sessionId) == null){
             //重新获取openid,sessionKey
             JSONObject json = SessionUtil.getSessionKey(code);
             if (json == null) {

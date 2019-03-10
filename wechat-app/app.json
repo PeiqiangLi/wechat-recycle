@@ -4,9 +4,8 @@
     "pages/index/index",
     "pages/cart/cart",
     "pages/my/my",
-    "pages/logs/logs",
-    "pages/home/home",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/waste/waste"
   ],
   "window": {
     "backgroundTextStyle": "dark",

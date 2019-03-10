@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.recycle.mapper.BannerMapper">
+
+    <select id="selectBanners" resultType="com.wechat.recycle.entity.Banner">
+        select * from `banner` where del_flag != '0' ORDER BY xuhao
+    </select>
+
+    <select id="selectUseBanners" resultType="com.wechat.recycle.entity.Banner">
+        select * from `banner` where del_flag = '1' ORDER BY xuhao
+    </select>
+
+</mapper>

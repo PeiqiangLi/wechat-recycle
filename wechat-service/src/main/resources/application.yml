@@ -15,6 +15,9 @@ mybatis:
 #  数据库映射实体类路径
 #  typeAliasesPackage: com.wechat.recycle.entity
   mapperLocations: classpath:mapper/*.xml
+  configuration:
+#    开启驼峰映射
+    map-underscore-to-camel-case: true
 
 jasypt:
   encryptor:
