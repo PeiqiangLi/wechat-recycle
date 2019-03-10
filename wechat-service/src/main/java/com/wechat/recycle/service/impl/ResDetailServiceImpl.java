@@ -6,6 +6,7 @@ import com.wechat.recycle.service.ResDetailService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class ResDetailServiceImpl implements ResDetailService {
@@ -17,4 +18,15 @@ public class ResDetailServiceImpl implements ResDetailService {
     public ResDetail selectOne(Integer id) {
         return null;
     }
+
+    @Override
+    public List<ResDetail> selectByType(Integer typeId) {
+        return resDetailMapper.selectByType(typeId);
+    }
+
+    @Override
+    public List<ResDetail> selectByAll() {
+        return resDetailMapper.selectByAll();
+    }
+
 }
