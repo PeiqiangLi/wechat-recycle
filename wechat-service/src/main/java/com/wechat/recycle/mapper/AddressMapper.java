@@ -1,5 +1,6 @@
 package com.wechat.recycle.mapper;
 
+import com.wechat.recycle.dto.AddressDTO;
 import com.wechat.recycle.entity.Address;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,6 +20,6 @@ public interface AddressMapper {
 
     int deleteOne(@Param("id")Integer id);
 
-    Address getDistance(Double latitude, Double longitude );
+    AddressDTO getMinAddress(@Param("latitude")Double latitude, @Param("longitude")Double longitude);
 
 }

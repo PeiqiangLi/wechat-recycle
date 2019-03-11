@@ -12,4 +12,13 @@ public class AddressDTO extends Address {
 
     private static final long serialVersionUID = 1L;
 
+    private double distance;
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 }

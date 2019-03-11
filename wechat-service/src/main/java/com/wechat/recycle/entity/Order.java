@@ -15,6 +15,8 @@ public class Order implements Serializable {
 
     private Integer id;
 
+    private String orderId;
+
     private Double money;
 
     // 订单状态：1-待回收，2-交易成功
@@ -31,6 +33,14 @@ public class Order implements Serializable {
     private Date createTime;
 
     private Date updateTime;
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
     public Integer getId() {
         return id;
