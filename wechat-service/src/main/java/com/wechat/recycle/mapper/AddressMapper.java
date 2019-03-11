@@ -19,4 +19,6 @@ public interface AddressMapper {
 
     int deleteOne(@Param("id")Integer id);
 
+    Address getDistance(Double latitude, Double longitude );
+
 }

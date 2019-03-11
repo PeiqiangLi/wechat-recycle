@@ -12,4 +12,8 @@ public interface ResDetailService {
 
     List<ResDetail> selectByAll();
 
+    List<ResDetail> selectByName(String name);
+
+    int deleteOne(Integer id);
+
 }

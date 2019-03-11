@@ -5,22 +5,67 @@
 <mapper namespace="com.wechat.recycle.mapper.ResDetailMapper">
 
     <select id="selectOne" resultType="com.wechat.recycle.entity.ResDetail">
-        select * from `res_detail` where id = #{id}
+        select * from res_detail where id = #{id}
     </select>
 
     <select id="selectByType" resultType="com.wechat.recycle.entity.ResDetail">
-        select * from `res_detail` where type_id = #{typeId}
+        select * from res_detail where type_id = #{typeId} and del_flag != '0'
     </select>
 
     <select id="selectByAll" resultType="com.wechat.recycle.entity.ResDetail">
-        select * from `res_detail` where del_flag != '0';
+        select * from res_detail where del_flag != '0';
     </select>
 
-    <!--    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
-                parameterType="com.wechat.recycle.entity.User">
-            insert into
-            `user` ()
-            values (#{},#{})
-        </insert>-->
+    <select id="selectByName" resultType="com.wechat.recycle.entity.ResDetail">
+        select * from res_detail where del_flag != '0' and `name` like "%"#{name,jdbcType=VARCHAR}"%";
+    </select>
+
+    <update id="deleteOne">
+        UPDATE res_detail
+        <set>
+            del_flag = "0",
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <insert id="addResDetail" parameterType="com.wechat.recycle.entity.ResDetail" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+        INSERT INTO res_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            type_id, `name`, icon_url, price, unit,
+            del_flag, create_time, update_time
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            #{typeId,jdbcType=INTEGER},
+            #{name,jdbcType=VARCHAR},
+            #{iconUrl,jdbcType=VARCHAR},
+            #{price,jdbcType=DOUBLE},
+            #{unit,jdbcType=VARCHAR},
+            "1",NOW(),NOW()
+        </trim>
+    </insert>
+
+    <update id="updateResDetail" parameterType="com.wechat.recycle.entity.ResDetail">
+        UPDATE res_detail
+        <set>
+            <if test="typeId !=null">
+                type_id = #{typeId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="iconUrl != null">
+                icon_url = #{iconUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DOUBLE},
+            </if>
+            <if test="unit != null">
+                unit = #{unit,jdbcType=VARCHAR},
+            </if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
 
 </mapper>

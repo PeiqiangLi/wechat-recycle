@@ -36,7 +36,7 @@ public class ResDetailController {
 
     @RequestMapping(value = "/getWasteByName", method = RequestMethod.GET)
     public Result getWasteByName(String name) {
-
+        List<ResDetail> resDetails = resDetailService.selectByName(name);
         return ResultUtil.success();
     }
 

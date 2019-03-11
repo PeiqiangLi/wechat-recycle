@@ -18,6 +18,8 @@ public interface ResDetailMapper {
 
     List<ResDetail> selectByAll();
 
+    List<ResDetail> selectByName(String name);
+
     /**
      * 在类别下新增一项物品
      * @return
@@ -25,5 +27,7 @@ public interface ResDetailMapper {
     int addResDetail(ResDetail resDetail);
 
     int updateResDetail(ResDetail resDetail);
+
+    int deleteOne(Integer id);
 
 }

@@ -29,4 +29,14 @@ public class ResDetailServiceImpl implements ResDetailService {
         return resDetailMapper.selectByAll();
     }
 
+    @Override
+    public List<ResDetail> selectByName(String name) {
+        return resDetailMapper.selectByName(name);
+    }
+
+    @Override
+    public int deleteOne(Integer id) {
+        return resDetailMapper.deleteOne(id);
+    }
+
 }
