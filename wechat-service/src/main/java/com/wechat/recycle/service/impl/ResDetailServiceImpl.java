@@ -30,13 +30,14 @@ public class ResDetailServiceImpl implements ResDetailService {
     }
 
     @Override
-    public List<ResDetail> selectByName(String name) {
-        return resDetailMapper.selectByName(name);
+    public List<ResDetail> selectByName(Integer typeId, String name) {
+        return resDetailMapper.selectByName(typeId, name);
     }
 
     @Override
     public int deleteOne(Integer id) {
         return resDetailMapper.deleteOne(id);
     }
+
 
 }

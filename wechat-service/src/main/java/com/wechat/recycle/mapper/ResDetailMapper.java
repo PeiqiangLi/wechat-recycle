@@ -2,6 +2,7 @@ package com.wechat.recycle.mapper;
 
 import com.wechat.recycle.entity.ResDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface ResDetailMapper {
 
     List<ResDetail> selectByAll();
 
-    List<ResDetail> selectByName(String name);
+    List<ResDetail> selectByName(@Param("typeId")Integer typeId, @Param("name")String name);
 
     /**
      * 在类别下新增一项物品

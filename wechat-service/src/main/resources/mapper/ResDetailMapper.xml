@@ -13,11 +13,11 @@
     </select>
 
     <select id="selectByAll" resultType="com.wechat.recycle.entity.ResDetail">
-        select * from res_detail where del_flag != '0';
+        select * from res_detail where del_flag != '0'
     </select>
 
     <select id="selectByName" resultType="com.wechat.recycle.entity.ResDetail">
-        select * from res_detail where del_flag != '0' and `name` like "%"#{name,jdbcType=VARCHAR}"%";
+        select * from res_detail where del_flag != '0' and type_id = #{typeId,jdbcType=INTEGER} and `name` like "%"#{name,jdbcType=VARCHAR}"%"
     </select>
 
     <update id="deleteOne">

@@ -38,7 +38,7 @@ Page({
       url: app.globalData.url + '/banner/getUsedBanners',
       success: res => {
         res = res.data
-        console.log(res.data);
+        //console.log(res.data);
         var img_url = new Array();
         for (var index in res.data) {
           img_url.push(res.data[index].imgUrl);
@@ -47,7 +47,7 @@ Page({
         this.setData({
           imgUrls: img_url
         })
-        console.log(this.data.imgUrls);
+        //console.log(this.data.imgUrls);
       }
     })
   },

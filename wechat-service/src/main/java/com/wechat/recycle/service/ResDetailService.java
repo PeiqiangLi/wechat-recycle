@@ -12,7 +12,7 @@ public interface ResDetailService {
 
     List<ResDetail> selectByAll();
 
-    List<ResDetail> selectByName(String name);
+    List<ResDetail> selectByName(Integer typeId, String name);
 
     int deleteOne(Integer id);
 
