@@ -15,6 +15,10 @@ public class Address implements Serializable {
 
     private Integer id;
 
+    private String realName;
+
+    private String mobile;
+
     private String province;
 
     private String city;
@@ -41,6 +45,22 @@ public class Address implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getProvince() {

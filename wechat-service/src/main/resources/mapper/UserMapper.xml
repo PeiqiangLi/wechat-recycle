@@ -9,15 +9,13 @@
     </select>
 
     <select id="selectByOpenid" resultType="com.wechat.recycle.entity.User">
-        select id,mobile,email,nick_name,real_name,address_id,avatar_url,role_type from `user` where open_id = #{openId}
+        select id,email,nick_name,address_id,avatar_url,role_type from `user` where open_id = #{openId}
     </select>
 
     <update id="updateUser" parameterType="com.wechat.recycle.entity.User">
         update `user`
         <trim prefix="set" suffixOverrides=",">
-            <if test="mobile != null">mobile = #{mobile},</if>
             <if test="email != null">email = #{email},</if>
-            <if test="realName != null">real_name = #{realName},</if>
             <if test="nickName != null">nick_name = #{nickName},</if>
             <if test="roleType != null">role_type = #{roleType},</if>
             <if test="avatarUrl != null">avatar_url = #{avatarUrl},</if>

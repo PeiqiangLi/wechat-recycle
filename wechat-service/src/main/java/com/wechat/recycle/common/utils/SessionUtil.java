@@ -20,9 +20,6 @@ public final class SessionUtil {
 
     }
 
-    @Resource
-    private static RedisUtil redisUtil;
-
     /**
      * @Author: PeiqiangLi
      * @Description: 请求微信服务器获取SessionKey
@@ -41,29 +38,6 @@ public final class SessionUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
-    }
-
-    /**
-     * @Author: PeiqiangLi
-     * @Description: 维持登录态
-     * @param:
-     * @Date: 2019/3/5 16:09
-     */
-    public static String getSessionInfo(String sessionId, String handleKey) {
-        if (redisUtil.hasKey(sessionId)) {
-            JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
-            if (handleKey == "openId") {
-                return jsonObject.getString("openId");
-            }
-            if (handleKey == "sessionKey") {
-                return jsonObject.getString("openId");
-            }
-            if (handleKey == "unionId") {
-                return jsonObject.getString("openId");
-            }
-        }
-
         return null;
     }
 

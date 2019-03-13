@@ -17,13 +17,9 @@ public class User implements Serializable {
 
     private String openId;
 
-    private String mobile;
-
     private String email;
 
     private String nickName;
-
-    private String realName;
 
     private Integer addressId;
 
@@ -55,14 +51,6 @@ public class User implements Serializable {
         this.openId = openId;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -77,14 +65,6 @@ public class User implements Serializable {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
     }
 
     public Integer getAddressId() {

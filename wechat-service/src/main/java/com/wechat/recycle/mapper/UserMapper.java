@@ -1,6 +1,7 @@
 package com.wechat.recycle.mapper;
 
 import com.wechat.recycle.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
 
@@ -38,6 +39,6 @@ public interface UserMapper {
      * @param:
      * @Date: 2019/3/5 15:13
      */
-    int updateUserAddress(Integer addressId, String openId);
+    int updateUserAddress(@Param("addressId")Integer addressId, @Param("openId")String openId);
 
 }

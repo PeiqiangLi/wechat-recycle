@@ -11,10 +11,12 @@
     <insert id="addAddress" parameterType="com.wechat.recycle.entity.Address" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
         INSERT INTO address
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            province, city, area, address, latitude, longitude,
+            real_name, mobile, province, city, area, address, latitude, longitude,
             del_flag, create_time, update_time
         </trim>
         <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            #{realName,jdbcType=VARCHAR},
+            #{mobile,jdbcType=VARCHAR},
             #{province,jdbcType=VARCHAR},
             #{city,jdbcType=VARCHAR},
             #{area,jdbcType=VARCHAR},
@@ -28,6 +30,12 @@
     <update id="updateAddress" parameterType="com.wechat.recycle.entity.Address">
         UPDATE address
         <set>
+            <if test="realName !=null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile !=null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
             <if test="province !=null">
                 province = #{province,jdbcType=VARCHAR},
             </if>
