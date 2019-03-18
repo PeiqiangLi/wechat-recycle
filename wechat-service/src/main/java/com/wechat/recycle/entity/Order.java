@@ -17,6 +17,12 @@ public class Order implements Serializable {
 
     private String orderId;
 
+    // 用户openId
+    private String citId;
+
+    // 回收员openId
+    private String recId;
+
     private Double money;
 
     // 订单状态：1-待回收，2-交易成功
@@ -48,6 +54,22 @@ public class Order implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCitId() {
+        return citId;
+    }
+
+    public void setCitId(String citId) {
+        this.citId = citId;
+    }
+
+    public String getRecId() {
+        return recId;
+    }
+
+    public void setRecId(String recId) {
+        this.recId = recId;
     }
 
     public Double getMoney() {

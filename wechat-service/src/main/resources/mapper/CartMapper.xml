@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.recycle.mapper.CartMapper">
+
+    <select id="selectCart" resultType="com.wechat.recycle.entity.CartDTO">
+        select res_detail.`name`, res_detail.`price`, cart.*
+        from cart,res_detail
+        where cart.waste_id = res_detail.id
+        and cart.open_id = #{openId}
+        and cart.del_flag != "0",
+    </select>
+
+    <insert id="addToCart" parameterType="com.wechat.recycle.entity.Cart" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+        INSERT INTO cart
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            waste_id, open_id, `count`, money,
+            del_flag, create_time, update_time
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            #{wasteId,jdbcType=INTEGER},
+            #{openId,jdbcType=VARCHAR},
+            #{count,jdbcType=DOUBLE},
+            #{money,jdbcType=DOUBLE},
+            "1",NOW(),NOW()
+        </trim>
+    </insert>
+
+    <update id="deleteOne">
+        UPDATE cart
+        <set>
+            del_flag = "0",
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>

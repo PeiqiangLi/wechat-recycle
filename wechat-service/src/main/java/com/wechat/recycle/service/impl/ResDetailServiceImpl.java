@@ -16,7 +16,7 @@ public class ResDetailServiceImpl implements ResDetailService {
 
     @Override
     public ResDetail selectOne(Integer id) {
-        return null;
+        return resDetailMapper.selectOne(id);
     }
 
     @Override

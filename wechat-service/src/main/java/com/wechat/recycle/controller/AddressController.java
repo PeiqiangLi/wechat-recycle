@@ -46,6 +46,9 @@ public class AddressController {
 
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)
     public Result addAddress(@RequestBody Address address, @RequestHeader String sessionId) {
+        if (!redisUtil.hasKey(sessionId)) {
+            return ResultUtil.error(StatusCodeEnum.USER_UNLOGIN);
+        }
         Result result = parameterTest(address);
         if (result != null){
             return ResultUtil.success(result);
@@ -73,7 +76,7 @@ public class AddressController {
 
     @RequestMapping(value = "/deleteAddress", method = RequestMethod.GET)
     public Result deleteAddress(Integer id) {
-        if (id == null) {
+        if (id == null || id ==0) {
             return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
         }
         int count = addressService.deleteOne(id);
