@@ -13,4 +13,6 @@ public interface CartService {
 
     int deleteOne(Integer id);
 
+    int deleteSome(List ids);
+
 }

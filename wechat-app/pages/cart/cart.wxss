@@ -1,4 +1,11 @@
 /* pages/cart/cart.wxss */
+page{
+  height: 100%;
+}
+
+.page{
+  height: calc(100% - 100rpx);
+}
 
 .cart-cell{
   position: fixed;
@@ -9,4 +16,89 @@
   width: 100%;
   line-height: 100%;
 }
+
+.weui-icon-checkbox_circle{
+  line-height: 100%;
+}
+
+.weui-icon-checkbox_success{
+  line-height: 100%;
+}
+
+.bd-title{
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bd-text{
+  font-weight: normal;
+  font-size: 14px; 
+  line-height: 18px;
+}
+
+.weui-cell__ft{
+  width: 120rpx;
+  text-align: left;
+  overflow: hidden;
+  color: black;
+  font-size: 14px; 
+}
+
+.ft-price{
+  color: red;
+  line-height: 16px;
+}
+
+.delete-icon {
+  position: absolute;
+  right: 28rpx;
+  top: 0rpx;
+  font-weight: bold;
+}
+
+.cart-fixed{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+  bottom: 0rpx;
+}
+
+.cart-bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.cart-allSelect{
+  line-height: 100rpx;
+  height: 100%;
+  padding-left: 15px;
+  width: 20%;
+}
+
+.cart-allPrice{
+  line-height: 100rpx;
+  padding-left: 10rpx;
+  height: 100%;
+  width: 50%;
+}
+
+.weui-btn{
+  background-color: #3399cc;
+  color: white;
+  height: 100%;
+  border-radius: 0;
+  border-style: none;
+  width: 30%;
+  margin: 0;
+}
+
+button::after{ border: none; }
+
 

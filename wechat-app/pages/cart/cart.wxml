@@ -1,13 +1,47 @@
 <!--pages/cart/cart.wxml-->
-<view class='page'>
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<scroll-view scroll-y class='page'>
 
-  <view class='weui-cell cart-cell' >
-    <view class="button_sp_area">
-      <button id="allcheck" class="weui-btn mini-btn" type="default" size="mini">全  选</button>
-    </view>
-    <view class="button_sp_area">
-      <button id="continue" class='weui-btn mini-btn' type="primary" size="mini">下一步</button>
-    </view>
+  <view class="weui-cells weui-cells_after-title">
+    <checkbox-group bindchange="checkboxChange">
+      <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="id">
+          <checkbox class="weui-check" value="{{item.id}}" checked="{{item.checked}}" data-id='{{item.id}}' />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+              <icon class="weui-icon-checkbox_success" color="#3399cc" type="success" size="23" wx:if="{{item.checked}}"></icon>
+          </view>
+
+          <view class="weui-cell__bd bd-title">
+            {{item.name}}
+            <view class='bd-text'>单价：{{filters.toFix(item.price)}}元/{{item.unit}}</view>
+            <view class='bd-text'>数量：{{filters.toFix(item.count)}}{{item.unit}}</view>
+          </view>
+
+          <view class="weui-cell__ft">预估价：
+          <view class='ft-price'>¥{{filters.toFix(item.money)}}</view>
+          </view>
+
+          <text bindtap="deleteWaste" data-index="{{index}}" class='delete-icon'> × </text>
+
+      </label>
+    </checkbox-group>
   </view>
 
+<view class='cart-fixed'>
+  <view class='cart-bottom'>
+    <!-- wx:if 是否全选显示不同图标 -->
+    <view class='cart-allSelect weui-cell__hd  weui-check__hd_in-checkbox'>
+      <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!selectAllStatus}}" color="#ff7100" bindtap="selectAll"></icon>
+      <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{selectAllStatus}}" color="#3399cc" bindtap="selectAll"></icon>
+      <text class='icon-text' bindtap="selectAll">全选</text>
+    </view> 
+    <!-- 总价 -->
+    <view class='cart-allPrice'>
+      合计：<text style='color:red'>¥{{filters.toFix(totalPrice)}}</text>
+    </view>
+    <button class='weui-btn' bindtap='toBuy'>下一步</button>
+  </view>
 </view>
+
+</scroll-view>

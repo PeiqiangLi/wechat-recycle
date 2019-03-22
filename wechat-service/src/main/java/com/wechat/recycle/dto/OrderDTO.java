@@ -26,12 +26,4 @@ public class OrderDTO extends Order {
         this.distance = distance;
     }
 
-    public static void main(String[] args) {
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-        String createdate = sdf.format(date);
-        BigInteger k=new BigInteger(String.valueOf(createdate));
-        System.out.println(k);
-    }
-
 }

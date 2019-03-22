@@ -30,4 +30,9 @@ public class CartServiceImpl implements CartService {
         return cartMapper.deleteOne(id);
     }
 
+    @Override
+    public int deleteSome(List ids) {
+        return cartMapper.deleteSome(ids);
+    }
+
 }

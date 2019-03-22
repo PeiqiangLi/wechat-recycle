@@ -54,6 +54,17 @@
   
   <view class='text_line'><text>精彩阅读</text></view>
 
+  <view class='article' bindtap='readArticle' data-id='{{item.id}}'>
+    <image src='http://localhost:8088/ziyuan/images/article/article1.png' class='article_img'></image>
+    <view class='article_title'>
+      <view>
+        <text class='article_line'>谁是上帝引发的一系列问题！！！</text>
+      </view>
+      <view>
+        <text class='article_content'>我就是上帝。</text>
+      </view>
+    </view>
+  </view>
   <view class='article'>
     <image src='http://localhost:8088/ziyuan/images/article/article1.png' class='article_img'></image>
     <view class='article_title'>
@@ -65,5 +76,6 @@
       </view>
     </view>
   </view>
+  
 </view>
 

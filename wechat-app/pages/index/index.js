@@ -21,12 +21,18 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    circular: true
+    circular: true,
+    article: []
   },
   //轮播图处理
   changeIndicatorDots() {
     this.setData({
       indicatorDots: !this.data.indicatorDots
+    })
+  },
+  readArticle (e) {
+    wx.navigateTo({
+      url: '../article/article?id=' + e.currentTarget.dataset.id,
     })
   },
 

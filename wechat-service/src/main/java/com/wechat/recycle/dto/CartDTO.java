@@ -10,6 +10,8 @@ public class CartDTO extends Cart {
 
     private Double price;
 
+    private String unit;
+
     public String getName() {
         return name;
     }
@@ -24,5 +26,13 @@ public class CartDTO extends Cart {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

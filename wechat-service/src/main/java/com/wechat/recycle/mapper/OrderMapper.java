@@ -1,6 +1,7 @@
 package com.wechat.recycle.mapper;
 
 import com.wechat.recycle.entity.Order;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author: PeiqiangLi
@@ -11,5 +12,7 @@ import com.wechat.recycle.entity.Order;
 public interface OrderMapper {
 
     Order selectOne(Integer id);
+
+    int deleteOne(@Param("id")Integer id);
 
 }

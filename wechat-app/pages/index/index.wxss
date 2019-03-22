@@ -40,7 +40,7 @@
 }
 
 .article {
-  margin: 10rpx 30rpx 10rpx 30rpx;
+  margin: 10rpx 30rpx 20px 30rpx;
   background-color: #fff;
   height: 210px;
   border-radius: 6px;

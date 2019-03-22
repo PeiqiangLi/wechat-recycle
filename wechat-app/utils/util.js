@@ -69,8 +69,23 @@ const dateFormat = date => {
   return (clock);
 }
 
+//删除左右两端的空格
+const trim = str => {
+  return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+//删除左边的空格
+const ltrim = str => {
+  return str.replace(/(^\s*)/g, "");
+}
+//删除右边的空格
+const rtrim = str => {
+  return str.replace(/(\s*$)/g, "");
+}
+
 module.exports = {
   formatTime: formatTime,
   timeFormat: timeFormat,
-  dateFormat: dateFormat
+  dateFormat: dateFormat,
+  trim: trim,
+  
 }
