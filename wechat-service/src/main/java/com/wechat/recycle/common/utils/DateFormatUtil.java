@@ -16,11 +16,10 @@ public final class DateFormatUtil {
 
     }
 
-    public static BigInteger getDateTime() {
+    public static String getDateTime() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-        String createdate = sdf.format(date);
-        return new BigInteger(String.valueOf(createdate));
+        return sdf.format(date);
     }
 
 }

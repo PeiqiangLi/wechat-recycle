@@ -15,19 +15,22 @@ Page({
     console.log('checkbox发生change事件，携带id值为：', e.detail.value);
 
     var checkboxItems = this.data.checkboxItems, values = e.detail.value;
+    var money = 0.00;
     for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
       checkboxItems[i].checked = false;
 
       for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
         if (checkboxItems[i].id == values[j]) {
           checkboxItems[i].checked = true;
+          money = money + checkboxItems[i].money;
           break;
         }
       }
     }
 
     this.setData({
-      checkboxItems: checkboxItems
+      checkboxItems: checkboxItems,
+      totalPrice: money
     });
   },
 
@@ -35,13 +38,19 @@ Page({
   selectAll: function () {
     var checkboxItems = this.data.checkboxItems;
     var selectAllStatus = !this.data.selectAllStatus;
+    var money = 0.00;
     for (var j = 0, lenJ = checkboxItems.length; j < lenJ; ++j) {
       checkboxItems[j].checked = selectAllStatus;
+      money = money + checkboxItems[j].money;
+    }
+    if (!selectAllStatus) {
+      money = 0.00;
     }
 
     this.setData({
       selectAllStatus: selectAllStatus,
-      checkboxItems: checkboxItems
+      checkboxItems: checkboxItems,
+      totalPrice: money
     });
   },
 
@@ -93,7 +102,7 @@ Page({
       var wasteJson = JSON.stringify(waste)
       var totalPrice = this.data.totalPrice
       wx.navigateTo({
-        url: '../buy/buy?waste={{wasteJson}}&totalPrice={{totalPrice}}',
+        url: '../buy/buy?waste=' + wasteJson + '&totalPrice=' + totalPrice,
       })
     } else {
       wx.showModal({
@@ -110,26 +119,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: app.globalData.url + '/cart/getCart',
-      data: {
-        sessionId: wx.getStorageSync('sessionId'),
-      },
-      success: res => {
-        res = res.data
-        console.log(res);
-        var cart = new Array();
-        var money = 0;
-        for (var index in res.data) {
-          cart.push(res.data[index]);
-          money = money + res.data[index].money;
-        }
-        this.setData({
-          checkboxItems: cart,
-          totalPrice: money
-        })
-      }
-    })
+    
   },
 
   /**
@@ -143,7 +133,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.request({
+      url: app.globalData.url + '/cart/getCart',
+      data: {
+        sessionId: wx.getStorageSync('sessionId'),
+      },
+      success: res => {
+        res = res.data
+        console.log(res);
+        var cart = new Array();
+        for (var index in res.data) {
+          cart.push(res.data[index]);
+        }
+        this.setData({
+          checkboxItems: cart,
+        })
+      }
+    })
   },
 
   /**

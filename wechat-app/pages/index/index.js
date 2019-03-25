@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nocancel: true,
     imgUrls: [],
     img1: '/images/types/kuzi.png',
     img2: '/images/types/yinliao.png',
@@ -90,6 +91,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    
   },
 
   /**

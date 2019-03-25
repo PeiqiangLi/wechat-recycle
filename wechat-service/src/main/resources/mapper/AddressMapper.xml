@@ -23,7 +23,8 @@
             #{address,jdbcType=VARCHAR},
             #{latitude,jdbcType=DOUBLE},
             #{longitude,jdbcType=DOUBLE},
-            "1",NOW(),NOW()
+            #{delFlag,jdbcType=CHAR},
+            NOW(),NOW()
         </trim>
     </insert>
 
@@ -68,10 +69,12 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
     
-    <select id="getDistance" resultType="com.wechat.recycle.entity.Address">
+    <select id="getMinAddress" resultType="com.wechat.recycle.dto.AddressDTO">
         SELECT *, 6378.137 * 2 * ASIN(SQRT(POW(SIN((#{latitude,jdbcType=DOUBLE}*PI()/180-latitude*PI()/180)/2),2)+COS(#{latitude,jdbcType=DOUBLE}*PI()/180)*COS(latitude*PI()/180)*POW(SIN((#{longitude,jdbcType=DOUBLE}*PI()/180-longitude*PI()/180)/2),2)))
          AS distance
-         FROM Address ORDER BY distance ASC limit 1
+         FROM Address
+         WHERE del_flag = "2"
+         ORDER BY distance ASC limit 1
     </select>
 
 </mapper>

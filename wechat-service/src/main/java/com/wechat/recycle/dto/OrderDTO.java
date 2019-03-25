@@ -1,10 +1,13 @@
 package com.wechat.recycle.dto;
 
+import com.wechat.recycle.entity.Cart;
 import com.wechat.recycle.entity.Order;
+import com.wechat.recycle.entity.OrderType;
 
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: PeiqiangLi
@@ -18,6 +21,16 @@ public class OrderDTO extends Order {
 
     private double distance;
 
+    private List<Cart> orderCart;
+
+    private List<OrderTypeDTO> orderTypeDTOS;
+
+    private String realName;
+
+    private String mobile;
+
+    private String address;
+
     public double getDistance() {
         return distance;
     }
@@ -26,4 +39,43 @@ public class OrderDTO extends Order {
         this.distance = distance;
     }
 
+    public List<Cart> getOrderCart() {
+        return orderCart;
+    }
+
+    public void setOrderCart(List<Cart> orderCart) {
+        this.orderCart = orderCart;
+    }
+
+    public List<OrderTypeDTO> getOrderTypeDTOS() {
+        return orderTypeDTOS;
+    }
+
+    public void setOrderTypeDTOS(List<OrderTypeDTO> orderTypeDTOS) {
+        this.orderTypeDTOS = orderTypeDTOS;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

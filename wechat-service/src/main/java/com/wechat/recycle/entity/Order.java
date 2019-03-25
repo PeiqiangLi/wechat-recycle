@@ -1,5 +1,7 @@
 package com.wechat.recycle.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,14 +22,15 @@ public class Order implements Serializable {
     // 用户openId
     private String citId;
 
-    // 回收员openId
-    private String recId;
+    // 回收站点id
+    private Integer recId;
 
     private Double money;
 
     // 订单状态：1-待回收，2-交易成功
     private Integer orderState;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderTime;
 
     private Integer addressId;
@@ -64,11 +67,11 @@ public class Order implements Serializable {
         this.citId = citId;
     }
 
-    public String getRecId() {
+    public Integer getRecId() {
         return recId;
     }
 
-    public void setRecId(String recId) {
+    public void setRecId(Integer recId) {
         this.recId = recId;
     }
 

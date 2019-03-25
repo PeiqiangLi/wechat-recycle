@@ -1,7 +1,12 @@
 package com.wechat.recycle.mapper;
 
+import com.wechat.recycle.dto.OrderDTO;
+import com.wechat.recycle.dto.OrderTypeDTO;
 import com.wechat.recycle.entity.Order;
+import com.wechat.recycle.entity.OrderType;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author: PeiqiangLi
@@ -11,7 +16,17 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface OrderMapper {
 
-    Order selectOne(Integer id);
+    OrderDTO selectOne(Integer id);
+
+    List<Order> selectOrders(String openId);
+
+    int addOrder(Order order);
+
+    int addOrderType(OrderType orderType);
+
+    List<OrderTypeDTO> selectTypes(String orderId);
+
+//    int updateOrder(Order order);
 
     int deleteOne(@Param("id")Integer id);
 
