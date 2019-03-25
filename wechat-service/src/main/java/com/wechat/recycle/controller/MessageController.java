@@ -1,8 +1,10 @@
 package com.wechat.recycle.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.common.utils.Result;
 import com.wechat.recycle.common.utils.ResultUtil;
 import com.wechat.recycle.common.utils.StatusCodeEnum;
+import com.wechat.recycle.entity.Message;
 import com.wechat.recycle.service.MessageService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +22,12 @@ public class MessageController {
     @RequestMapping(value = "/getCurrentMessage", method = RequestMethod.GET)
     public Result getCurrentMessage() {
         return ResultUtil.success(messageService.selectCurrent());
+    }
+
+    @RequestMapping(value = "/getAllMessage", method = RequestMethod.GET)
+    public Result getAllMessage(Integer pageNum, Integer pageSize, String title) {
+        PageInfo<Message> messagePageInfo = messageService.selectAll(pageNum, pageSize, title);
+        return ResultUtil.pageResult(messagePageInfo);
     }
 
     @RequestMapping(value = "/deleteMessage", method = RequestMethod.GET)

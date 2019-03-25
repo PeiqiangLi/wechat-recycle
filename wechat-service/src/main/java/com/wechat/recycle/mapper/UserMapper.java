@@ -1,7 +1,10 @@
 package com.wechat.recycle.mapper;
 
+import com.wechat.recycle.entity.Admin;
 import com.wechat.recycle.entity.User;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMapper {
 
@@ -18,6 +21,8 @@ public interface UserMapper {
      * @return User
      */
     User selectByOpenid(String openId);
+
+    List<User> selectAllUser(String nickName);
 
     /**
      * 新增用户
@@ -40,5 +45,13 @@ public interface UserMapper {
      * @Date: 2019/3/5 15:13
      */
     int updateUserAddress(@Param("addressId")Integer addressId, @Param("openId")String openId);
+
+    Admin selectAdmin(String mobile);
+
+    int addAdmin(Admin admin);
+
+    int deleteOne(Integer id);
+
+    List<Admin> selectAllAdmin(String username);
 
 }

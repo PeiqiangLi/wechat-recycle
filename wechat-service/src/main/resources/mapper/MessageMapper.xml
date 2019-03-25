@@ -12,6 +12,10 @@
         select * from message order by create_time desc limit 10
     </select>
 
+    <select id="selectAll" resultType="com.wechat.recycle.entity.Message">
+        select * from message where dei_flag != "0" and title like CONCAT('%',#{title,jdbcType=VARCHAR},'%') order by create_time desc
+    </select>
+
     <insert id="addAddress" parameterType="com.wechat.recycle.entity.Address" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
         INSERT INTO message
         <trim prefix="(" suffix=")" suffixOverrides=",">

@@ -1,5 +1,22 @@
 <!--index.wxml-->
 <view class='page'>
+
+<view class="modal-box" hidden='{{!(!hasUserInfo && canIUse)}}'>
+  <view class="modal-content">
+    <view class="content-title">微信授权</view>
+    <view class="content-text">
+      绑定微信号需要收集您的部分用户信息，否则将无法绑定成功，请点击“确认”后按操作提示授权。
+    </view>
+  </view>
+  <view class="modal-btns">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <button class="dialog-btn confirm" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
+      </view>
+    </view>
+  </view>
+</view>
+
   <swiper class='slide'
   indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}"

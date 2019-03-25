@@ -1,5 +1,6 @@
 package com.wechat.recycle.service;
 
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.entity.Message;
 
 import java.util.List;
@@ -8,7 +9,7 @@ public interface MessageService {
 
     Message selectOne(Integer id);
 
-    List<Message> selectAll();
+    PageInfo<Message> selectAll(Integer pageNum, Integer pageSize, String title);
 
     int deleteOne(Integer id);
 

@@ -2,6 +2,8 @@ package com.wechat.recycle.service;
 
 import com.wechat.recycle.entity.ResType;
 
+import java.util.List;
+
 public interface ResTypeService {
 
     /**
@@ -10,5 +12,7 @@ public interface ResTypeService {
      * @return
      */
     ResType selectOne(Integer id);
+
+    List<ResType> selectAllTypes();
 
 }

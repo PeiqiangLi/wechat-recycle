@@ -12,6 +12,10 @@
         select id,openid,mobile,email,nick_name,real_name,address,role_type from `user` where openid = #{openid}
     </select>
 
+    <select id="selectAllTypes" resultType="com.wechat.recycle.entity.ResType">
+        select * from res_type where del_flag != "0" order by id asc
+    </select>
+
     <!--    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
                 parameterType="com.wechat.recycle.entity.User">
             insert into

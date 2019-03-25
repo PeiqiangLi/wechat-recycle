@@ -12,6 +12,10 @@
         select id,email,nick_name,address_id,avatar_url,role_type from `user` where open_id = #{openId}
     </select>
 
+    <select id="selectAllUser" resultType="com.wechat.recycle.entity.User">
+        select id,email,nick_name,address_id,avatar_url,role_type from `user` where nick_name like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+    </select>
+
     <update id="updateUser" parameterType="com.wechat.recycle.entity.User">
         update `user`
         <trim prefix="set" suffixOverrides=",">
@@ -41,5 +45,31 @@
         </trim>
         values (#{openId},#{nickName},#{avatarUrl})
     </insert>
+
+    <select id="selectAdmin" resultType="com.wechat.recycle.entity.Admin">
+        select * from admin where mobile = #{mobile}
+    </select>
+
+    <select id="selectAllAdmin" resultType="com.wechat.recycle.entity.Admin">
+        select * from admin where del_flag != "0" and userame like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+    </select>
+
+    <insert id="addAdmin" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
+            parameterType="com.wechat.recycle.entity.Admin">
+        insert into admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            mobile,email,username,password
+        </trim>
+        values (#{mobile},#{email},#{username},#{password})
+    </insert>
+
+    <update id="deleteOne">
+        UPDATE admin
+        <set>
+            del_flag = "0",
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
 
 </mapper>

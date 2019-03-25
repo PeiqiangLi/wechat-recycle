@@ -10,7 +10,7 @@ public interface MessageMapper {
 
     int addAddress(Message message);
 
-    List<Message> selectAll();
+    List<Message> selectAll(String title);
 
     int deleteOne(Integer id);
 

@@ -6,8 +6,10 @@ import com.wechat.recycle.entity.User;
 import com.wechat.recycle.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -83,6 +85,13 @@ public class IndexController {
         redisUtil.expire(sessionId,86400);
         // 用户已存在直接返回sessionId
         return ResultUtil.success(sessionId);
+    }
+
+    @RequestMapping(value = "/uploadImg")
+    public Result uploadImg(MultipartFile file, String path) throws IOException {
+        String savePath = FileHandleUtil.upload(file.getInputStream(), path, file.getOriginalFilename());
+
+        return ResultUtil.success("文件存放路径为" + savePath);
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

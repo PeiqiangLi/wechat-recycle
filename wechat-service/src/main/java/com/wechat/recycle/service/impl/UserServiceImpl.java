@@ -1,11 +1,15 @@
 package com.wechat.recycle.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.wechat.recycle.entity.Admin;
 import com.wechat.recycle.entity.User;
 import com.wechat.recycle.mapper.UserMapper;
 import com.wechat.recycle.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,6 +28,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public PageInfo<User> selectAllUser(Integer pageNum, Integer pageSize, String nickName) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<User> users = userMapper.selectAllUser(nickName);
+        return new PageInfo<>(users);
+    }
+
+    @Override
     public int addUser(User user) {
         return userMapper.addUser(user);
     }
@@ -36,6 +47,28 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateUserAddress(Integer addressId, String openId) {
         return userMapper.updateUserAddress(addressId, openId);
+    }
+
+    @Override
+    public Admin selectAdmin(String mobile) {
+        return userMapper.selectAdmin(mobile);
+    }
+
+    @Override
+    public int addAdmin(Admin admin) {
+        return userMapper.addAdmin(admin);
+    }
+
+    @Override
+    public int deleteOne(Integer id) {
+        return userMapper.deleteOne(id);
+    }
+
+    @Override
+    public PageInfo<Admin> selectAllAdmin(Integer pageNum, Integer pageSize, String username) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Admin> adminList = userMapper.selectAllAdmin(username);
+        return new PageInfo<>(adminList);
     }
 
 }

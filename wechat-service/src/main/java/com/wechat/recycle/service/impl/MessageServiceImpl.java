@@ -1,5 +1,7 @@
 package com.wechat.recycle.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.entity.Message;
 import com.wechat.recycle.mapper.MessageMapper;
 import com.wechat.recycle.service.MessageService;
@@ -20,8 +22,10 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> selectAll() {
-        return null;
+    public PageInfo<Message> selectAll(Integer pageNum, Integer pageSize, String title) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Message> messages = messageMapper.selectAll(title);
+        return new PageInfo<>(messages);
     }
 
     @Override
