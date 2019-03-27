@@ -67,6 +67,26 @@
         values (#{mobile},#{email},#{username},#{password})
     </insert>
 
+    <update id="updateAdmin" parameterType="com.wechat.recycle.entity.Admin">
+        UPDATE admin
+        <set>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER} AND del_flag != "0"
+    </update>
+
     <update id="deleteOne">
         UPDATE admin
         <set>

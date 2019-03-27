@@ -50,6 +50,8 @@ public interface UserMapper {
 
     Admin selectUsername(String username);
 
+    int updateAdmin(Admin admin);
+
     int addAdmin(Admin admin);
 
     int deleteOne(Integer id);

@@ -60,6 +60,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int updateAdmin(Admin admin) {
+        return userMapper.updateAdmin(admin);
+    }
+
+    @Override
     public int addAdmin(Admin admin) {
         return userMapper.addAdmin(admin);
     }

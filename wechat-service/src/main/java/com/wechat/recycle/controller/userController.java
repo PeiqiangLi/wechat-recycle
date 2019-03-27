@@ -67,11 +67,26 @@ public class userController {
     }
 
     @RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
-    public Result addAdmin(Admin admin) {
+    public Result addAdmin(@RequestBody Admin admin) {
         if (admin == null || StringUtils.isEmpty(admin.getMobile()) || StringUtils.isEmpty(admin.getUsername()) || StringUtils.isEmpty(admin.getPassword())) {
             return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
         }
-        userService.addAdmin(admin);
+        int count = userService.addAdmin(admin);
+        if (count > 0) {
+            return ResultUtil.success();
+        }
+        return ResultUtil.error(StatusCodeEnum.FAILED);
+    }
+
+    @RequestMapping(value = "/updateAdmin", method = RequestMethod.POST)
+    public Result updateAdmin(@RequestBody Admin admin) {
+        if (admin == null || StringUtils.isEmpty(admin.getMobile()) || StringUtils.isEmpty(admin.getUsername()) || StringUtils.isEmpty(admin.getPassword())) {
+            return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
+        }
+        int count = userService.updateAdmin(admin);
+        if (count > 0) {
+            return ResultUtil.success();
+        }
         return ResultUtil.error(StatusCodeEnum.FAILED);
     }
 

@@ -1,5 +1,6 @@
 package com.wechat.recycle.service;
 
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.entity.Address;
 
 /**
@@ -17,5 +18,7 @@ public interface AddressService {
     int updateAddress(Address address);
 
     int deleteOne(Integer id);
+
+    PageInfo<Address> selectAllAddress(Integer pageNum, Integer pageSize, String province,String city,String area, String address);
 
 }

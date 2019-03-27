@@ -1,6 +1,7 @@
 package com.wechat.recycle.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.common.utils.*;
 import com.wechat.recycle.entity.Address;
 import com.wechat.recycle.entity.User;
@@ -42,6 +43,17 @@ public class AddressController {
         }
 
         return ResultUtil.success(null);
+    }
+
+    @RequestMapping(value = "/getAllAddress", method = RequestMethod.GET)
+    public Result getAllAddress(Integer pageNum, Integer pageSize, String province,String city,String area, String address) {
+        if ("".equals(province)  || "".equals(city) || "".equals(area)) {
+            province=null;
+            city=null;
+            area=null;
+        }
+        PageInfo<Address> addressPageInfo = addressService.selectAllAddress(pageNum, pageSize, province, city, area, address);
+        return ResultUtil.pageResult(addressPageInfo);
     }
 
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)

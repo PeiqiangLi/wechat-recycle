@@ -4,6 +4,8 @@ import com.wechat.recycle.dto.AddressDTO;
 import com.wechat.recycle.entity.Address;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @Author: PeiqiangLi
  * @Description:
@@ -21,5 +23,7 @@ public interface AddressMapper {
     int deleteOne(@Param("id")Integer id);
 
     AddressDTO getMinAddress(@Param("latitude")Double latitude, @Param("longitude")Double longitude);
+
+    List<Address> selectAllAddress(@Param("province")String province, @Param("city")String city, @Param("area")String area, @Param("address")String address);
 
 }

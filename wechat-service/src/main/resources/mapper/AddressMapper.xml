@@ -8,6 +8,22 @@
         select * from address where id = #{id}
     </select>
 
+    <select id="selectAllAddress" resultType="com.wechat.recycle.entity.Address">
+        select * from address
+        where
+        del_flag = "2" and
+        <if test="province != null">
+            province = #{province,jdbcType=VARCHAR} and
+        </if>
+        <if test="city != null">
+            city = #{city,jdbcType=VARCHAR} and
+        </if>
+        <if test="area !=null">
+            area = #{area,jdbcType=VARCHAR} and
+        </if>
+        address like CONCAT('%',#{address,jdbcType=VARCHAR},'%')
+    </select>
+
     <insert id="addAddress" parameterType="com.wechat.recycle.entity.Address" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
         INSERT INTO address
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -31,10 +47,10 @@
     <update id="updateAddress" parameterType="com.wechat.recycle.entity.Address">
         UPDATE address
         <set>
-            <if test="realName !=null">
+            <if test="realName != null">
                 real_name = #{realName,jdbcType=VARCHAR},
             </if>
-            <if test="mobile !=null">
+            <if test="mobile != null">
                 mobile = #{mobile,jdbcType=VARCHAR},
             </if>
             <if test="province !=null">
