@@ -8,7 +8,7 @@ public interface MessageMapper {
 
     Message selectOne(Integer id);
 
-    int addAddress(Message message);
+    int addMessage(Message message);
 
     List<Message> selectAll(String title);
 

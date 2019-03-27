@@ -50,8 +50,12 @@
         select * from admin where mobile = #{mobile}
     </select>
 
+    <select id="selectUsername" resultType="com.wechat.recycle.entity.Admin">
+        select * from admin where username = #{username}
+    </select>
+
     <select id="selectAllAdmin" resultType="com.wechat.recycle.entity.Admin">
-        select * from admin where del_flag != "0" and userame like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+        select * from admin where del_flag != "0" and username like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
     </select>
 
     <insert id="addAdmin" useGeneratedKeys="true" keyProperty="id" keyColumn="id"

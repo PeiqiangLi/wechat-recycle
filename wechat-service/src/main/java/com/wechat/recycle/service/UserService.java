@@ -25,6 +25,8 @@ public interface UserService {
 
     Admin selectAdmin(String mobile);
 
+    Admin selectUsername(String username);
+
     int addAdmin(Admin admin);
 
     int deleteOne(Integer id);

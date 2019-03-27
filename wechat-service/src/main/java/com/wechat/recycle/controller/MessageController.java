@@ -6,6 +6,8 @@ import com.wechat.recycle.common.utils.ResultUtil;
 import com.wechat.recycle.common.utils.StatusCodeEnum;
 import com.wechat.recycle.entity.Message;
 import com.wechat.recycle.service.MessageService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +39,16 @@ public class MessageController {
         }
         int count = messageService.deleteOne(id);
         if (count <= 0) return ResultUtil.error("1002","删除消息失败");
+        return ResultUtil.success();
+    }
+
+    @RequestMapping(value = "/addMessage", method = RequestMethod.POST)
+    public Result addMessage(@RequestBody Message message) {
+        if (message == null || StringUtils.isEmpty(message.getMessage()) || StringUtils.isEmpty(message.getTitle())) {
+            return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
+        }
+        int count = messageService.addMessage(message);
+        if (count <= 0) return ResultUtil.error("1002","新增失败");
         return ResultUtil.success();
     }
 

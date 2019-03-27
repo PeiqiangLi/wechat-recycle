@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Admin selectUsername(String username) {
+        return userMapper.selectUsername(username);
+    }
+
+    @Override
     public int addAdmin(Admin admin) {
         return userMapper.addAdmin(admin);
     }

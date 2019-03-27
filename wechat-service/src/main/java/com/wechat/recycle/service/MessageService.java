@@ -13,7 +13,7 @@ public interface MessageService {
 
     int deleteOne(Integer id);
 
-    int addAddress(Message message);
+    int addMessage(Message message);
 
     List<Message> selectCurrent();
 
