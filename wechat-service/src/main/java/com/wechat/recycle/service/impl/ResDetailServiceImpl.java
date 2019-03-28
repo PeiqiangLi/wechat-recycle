@@ -45,7 +45,8 @@ public class ResDetailServiceImpl implements ResDetailService {
     public PageInfo<ResDetail> selectWastePage(Integer pageNum, Integer pageSize, Integer typeId, String name) {
         PageHelper.startPage(pageNum,pageSize);
         List<ResDetail> resDetails =  resDetailMapper.selectByName(typeId, name);
-        return new PageInfo<>(resDetails);
+        PageInfo<ResDetail> resDetailPageInfo = new PageInfo<>(resDetails);
+        return resDetailPageInfo;
     }
 
 

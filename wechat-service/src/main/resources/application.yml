@@ -22,6 +22,11 @@ mybatis:
 #    开启驼峰映射
     map-underscore-to-camel-case: true
 
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  pageSizeZero: true
+
 jasypt:
   encryptor:
     password: EbfYkitulv73I2p0mXI50JMCoaxZTPJ7

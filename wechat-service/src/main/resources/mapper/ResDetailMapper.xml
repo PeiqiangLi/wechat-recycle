@@ -18,10 +18,10 @@
 
     <select id="selectByName" resultType="com.wechat.recycle.entity.ResDetail">
         select * from res_detail where del_flag != '0'
-        <if test="typeId != 0 ">
-            and type_id = #{typeId,jdbcType=INTEGER},
+        <if test="typeId != 0 and typeId != null">
+            and type_id = #{typeId,jdbcType=INTEGER}
         </if>
-        and `name` like "%"#{name,jdbcType=VARCHAR}"%"
+        and `name` like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
     </select>
 
     <update id="deleteOne">
