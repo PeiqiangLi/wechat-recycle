@@ -24,7 +24,7 @@ public class ResTypeController {
     @Resource
     private ResTypeService resTypeService;
 
-    @RequestMapping(value = "/getResDetail", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllTypes", method = RequestMethod.GET)
     public Result getAllTypes() {
         List<ResType> resTypes = resTypeService.selectAllTypes();
         return ResultUtil.success(resTypes);

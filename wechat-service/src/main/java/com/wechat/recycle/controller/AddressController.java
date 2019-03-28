@@ -63,7 +63,7 @@ public class AddressController {
         }
         Result result = parameterTest(address);
         if (result != null){
-            return ResultUtil.success(result);
+            return result;
         }
         int id = addressService.addAddress(address);
         if (id <= 0) return ResultUtil.error("1002","新增地址失败");
@@ -79,7 +79,7 @@ public class AddressController {
     public Result updateAddress(@RequestBody Address address) {
         Result result = parameterTest(address);
         if (result != null){
-            return ResultUtil.success(result);
+            return result;
         }
         int count = addressService.updateAddress(address);
         if (count <= 0) return ResultUtil.error("1002","更新地址失败");
@@ -93,6 +93,18 @@ public class AddressController {
         }
         int count = addressService.deleteOne(id);
         if (count <= 0) return ResultUtil.error("1002","删除地址失败");
+        return ResultUtil.success();
+    }
+
+    @RequestMapping(value = "/addRecycle", method = RequestMethod.POST)
+    public Result addRecycle(@RequestBody Address address) {
+        Result result = parameterTest(address);
+        if (result != null){
+            return result;
+        }
+        address.setDelFlag("2");
+        int id = addressService.addAddress(address);
+        if (id <= 0) return ResultUtil.error("1002","新增地址失败");
         return ResultUtil.success();
     }
 

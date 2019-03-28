@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.common.utils.Result;
 import com.wechat.recycle.common.utils.ResultUtil;
 import com.wechat.recycle.common.utils.StatusCodeEnum;
+import com.wechat.recycle.dto.UserDTO;
 import com.wechat.recycle.entity.Admin;
 import com.wechat.recycle.entity.User;
 import com.wechat.recycle.service.UserService;
@@ -24,8 +25,9 @@ public class userController {
     private UserService userService;
 
     @RequestMapping(value = "/getAllUser", method = RequestMethod.GET)
-    public Result getAllUser(Integer pageNum, Integer pageSize, String nickName) {
-        PageInfo<User> userPageInfo = userService.selectAllUser(pageNum, pageSize, nickName);
+    public Result getAllUser(Integer pageNum, Integer pageSize, String nickName, String roleType) {
+        if ("".equals(roleType)) roleType=null;
+        PageInfo<UserDTO> userPageInfo = userService.selectAllUser(pageNum, pageSize, nickName, roleType);
         return ResultUtil.pageResult(userPageInfo);
     }
 

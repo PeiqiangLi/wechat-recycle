@@ -12,8 +12,13 @@
         select id,email,nick_name,address_id,avatar_url,role_type from `user` where open_id = #{openId}
     </select>
 
-    <select id="selectAllUser" resultType="com.wechat.recycle.entity.User">
-        select id,email,nick_name,address_id,avatar_url,role_type from `user` where nick_name like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
+    <select id="selectAllUser" resultType="com.wechat.recycle.dto.UserDTO">
+        select `user`.id,`user`.open_id,`user`.nick_name,`user`.avatar_url,`user`.role_type,`user`.create_time,`user`.update_time,
+        address.real_name as addressName
+        from `user`, address
+        where `user`.address_id = address.id
+        <if test="roleType != null">and role_type = #{roleType}</if>
+        and nick_name like CONCAT('%',#{nickName,jdbcType=VARCHAR},'%')
     </select>
 
     <update id="updateUser" parameterType="com.wechat.recycle.entity.User">

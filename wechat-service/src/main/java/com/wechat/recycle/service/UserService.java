@@ -1,6 +1,7 @@
 package com.wechat.recycle.service;
 
 import com.github.pagehelper.PageInfo;
+import com.wechat.recycle.dto.UserDTO;
 import com.wechat.recycle.entity.Admin;
 import com.wechat.recycle.entity.User;
 
@@ -15,7 +16,7 @@ public interface UserService {
 
     User selectByOpenid(String openid);
 
-    PageInfo<User> selectAllUser(Integer pageNum, Integer pageSize, String nickName);
+    PageInfo<UserDTO> selectAllUser(Integer pageNum, Integer pageSize, String nickName, String roleType);
 
     int addUser(User user);
 

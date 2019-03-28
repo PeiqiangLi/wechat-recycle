@@ -1,5 +1,6 @@
 package com.wechat.recycle.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.common.utils.Result;
 import com.wechat.recycle.common.utils.ResultUtil;
 import com.wechat.recycle.entity.ResDetail;
@@ -38,6 +39,12 @@ public class ResDetailController {
     public Result getWasteByName(Integer typeId, String name) {
         List<ResDetail> resDetails = resDetailService.selectByName(typeId, name);
         return ResultUtil.success(resDetails);
+    }
+
+    @RequestMapping(value = "/getWastePage", method = RequestMethod.GET)
+    public Result getWastePage(Integer pageNum, Integer pageSize, Integer typeId, String name) {
+        PageInfo<ResDetail> resDetails = resDetailService.selectWastePage(pageNum, pageSize, typeId, name);
+        return ResultUtil.pageResult(resDetails);
     }
 
 }

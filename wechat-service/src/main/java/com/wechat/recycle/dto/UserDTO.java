@@ -12,4 +12,13 @@ public class UserDTO extends User {
 
     private static final long serialVersionUID = 1L;
 
+    private String addressName;
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
+    }
 }

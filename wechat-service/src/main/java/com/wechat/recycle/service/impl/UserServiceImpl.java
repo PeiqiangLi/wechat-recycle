@@ -2,6 +2,7 @@ package com.wechat.recycle.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wechat.recycle.dto.UserDTO;
 import com.wechat.recycle.entity.Admin;
 import com.wechat.recycle.entity.User;
 import com.wechat.recycle.mapper.UserMapper;
@@ -28,9 +29,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageInfo<User> selectAllUser(Integer pageNum, Integer pageSize, String nickName) {
+    public PageInfo<UserDTO> selectAllUser(Integer pageNum, Integer pageSize, String nickName, String roleType) {
         PageHelper.startPage(pageNum,pageSize);
-        List<User> users = userMapper.selectAllUser(nickName);
+        List<UserDTO> users = userMapper.selectAllUser(nickName,roleType);
         return new PageInfo<>(users);
     }
 

@@ -1,5 +1,7 @@
 package com.wechat.recycle.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.entity.ResDetail;
 import com.wechat.recycle.mapper.ResDetailMapper;
 import com.wechat.recycle.service.ResDetailService;
@@ -37,6 +39,13 @@ public class ResDetailServiceImpl implements ResDetailService {
     @Override
     public int deleteOne(Integer id) {
         return resDetailMapper.deleteOne(id);
+    }
+
+    @Override
+    public PageInfo<ResDetail> selectWastePage(Integer pageNum, Integer pageSize, Integer typeId, String name) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<ResDetail> resDetails =  resDetailMapper.selectByName(typeId, name);
+        return new PageInfo<>(resDetails);
     }
 
 

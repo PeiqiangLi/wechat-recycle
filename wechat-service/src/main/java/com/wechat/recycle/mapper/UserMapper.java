@@ -1,5 +1,6 @@
 package com.wechat.recycle.mapper;
 
+import com.wechat.recycle.dto.UserDTO;
 import com.wechat.recycle.entity.Admin;
 import com.wechat.recycle.entity.User;
 import org.apache.ibatis.annotations.Param;
@@ -22,7 +23,7 @@ public interface UserMapper {
      */
     User selectByOpenid(String openId);
 
-    List<User> selectAllUser(String nickName);
+    List<UserDTO> selectAllUser(@Param("nickName")String nickName, @Param("roleType")String roleType);
 
     /**
      * 新增用户

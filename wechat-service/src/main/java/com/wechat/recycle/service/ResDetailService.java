@@ -1,5 +1,6 @@
 package com.wechat.recycle.service;
 
+import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.entity.ResDetail;
 
 import java.util.List;
@@ -15,5 +16,7 @@ public interface ResDetailService {
     List<ResDetail> selectByName(Integer typeId, String name);
 
     int deleteOne(Integer id);
+
+    PageInfo<ResDetail> selectWastePage(Integer pageNum, Integer pageSize, Integer typeId, String name);
 
 }
