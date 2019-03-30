@@ -65,6 +65,7 @@ public class AddressController {
         if (result != null){
             return result;
         }
+        address.setDelFlag("1");
         int id = addressService.addAddress(address);
         if (id <= 0) return ResultUtil.error("1002","新增地址失败");
         User user = new User();

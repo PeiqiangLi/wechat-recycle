@@ -41,7 +41,7 @@ public final class FileHandleUtil {
         //第一次会创建文件夹
         createDirIfNotExists();
 
-        String resultPath = fileDir + path + filename;
+        String resultPath = fileDir + path + "/" + filename;
 
         //存文件
         File uploadFile = new File(absolutePath, staticDir + resultPath);

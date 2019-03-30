@@ -90,8 +90,8 @@ public class IndexController {
     @RequestMapping(value = "/uploadImg")
     public Result uploadImg(MultipartFile file, String path) throws IOException {
         String savePath = FileHandleUtil.upload(file.getInputStream(), path, file.getOriginalFilename());
-
-        return ResultUtil.success("文件存放路径为" + savePath);
+        System.out.println("文件存放路径为" + savePath);
+        return ResultUtil.success("http://localhost:8088/ziyuan" + savePath);
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

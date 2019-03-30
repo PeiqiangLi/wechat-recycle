@@ -61,6 +61,9 @@ public class userController {
 
     @RequestMapping(value = "/deleteAdmin", method = RequestMethod.GET)
     public Result deleteAdmin(Integer id) {
+        if (id == null) {
+            return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
+        }
         int count = userService.deleteOne(id);
         if (count > 0) {
             return ResultUtil.success();

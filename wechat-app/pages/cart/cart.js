@@ -146,6 +146,8 @@ Page({
           cart.push(res.data[index]);
         }
         this.setData({
+          selectAllStatus: false,
+          totalPrice: 0.00,
           checkboxItems: cart,
         })
       }

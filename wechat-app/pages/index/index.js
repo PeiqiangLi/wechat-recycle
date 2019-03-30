@@ -154,7 +154,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    wx.request({
+      url: app.globalData.url + '/article/getArticles',
+      success: res => {
+        res = res.data
+        //console.log(res.data);
+        var img_url = new Array();
+        for (var index in res.data) {
+          img_url.push(res.data[index].imgUrl);
+          //this.data.imgUrls[index] = res.data[index].imgUrl
+        }
+        this.setData({
+          article: res.data
+        })
+        //console.log(this.data.imgUrls);
+      }
+    })
+    wx.stopPullDownRefresh()
   },
 
   /**

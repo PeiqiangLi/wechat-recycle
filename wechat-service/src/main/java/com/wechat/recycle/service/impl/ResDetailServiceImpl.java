@@ -42,11 +42,21 @@ public class ResDetailServiceImpl implements ResDetailService {
     }
 
     @Override
+    public int addResDetail(ResDetail resDetail) {
+
+        return resDetailMapper.addResDetail(resDetail);
+    }
+
+    @Override
+    public int updateResDetail(ResDetail resDetail) {
+        return resDetailMapper.updateResDetail(resDetail);
+    }
+
+    @Override
     public PageInfo<ResDetail> selectWastePage(Integer pageNum, Integer pageSize, Integer typeId, String name) {
         PageHelper.startPage(pageNum,pageSize);
         List<ResDetail> resDetails =  resDetailMapper.selectByName(typeId, name);
-        PageInfo<ResDetail> resDetailPageInfo = new PageInfo<>(resDetails);
-        return resDetailPageInfo;
+        return new PageInfo<>(resDetails);
     }
 
 

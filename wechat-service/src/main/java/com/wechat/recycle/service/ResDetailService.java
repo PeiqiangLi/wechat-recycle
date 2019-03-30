@@ -17,6 +17,10 @@ public interface ResDetailService {
 
     int deleteOne(Integer id);
 
+    int addResDetail(ResDetail resDetail);
+
+    int updateResDetail(ResDetail resDetail);
+
     PageInfo<ResDetail> selectWastePage(Integer pageNum, Integer pageSize, Integer typeId, String name);
 
 }
