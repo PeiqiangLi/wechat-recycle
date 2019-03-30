@@ -10,4 +10,8 @@ public interface BannerService {
 
     List<Banner> selectUseBanners();
 
+    int updateXuHao(Integer xuhao, Integer id);
+
+    int updateBanner(Banner banner);
+
 }

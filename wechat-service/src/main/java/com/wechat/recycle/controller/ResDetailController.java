@@ -35,7 +35,7 @@ public class ResDetailController {
             return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
         }
         int count = resDetailService.addResDetail(resDetail);
-        if (count <= 0) return ResultUtil.error("1002","删除消息失败");
+        if (count <= 0) return ResultUtil.error("1002","删除失败");
         return ResultUtil.success();
     }
 
@@ -47,7 +47,7 @@ public class ResDetailController {
             return ResultUtil.error(StatusCodeEnum.PARAMS_EXCEPTION);
         }
         int count = resDetailService.updateResDetail(resDetail);
-        if (count <= 0) return ResultUtil.error("1002","删除消息失败");
+        if (count <= 0) return ResultUtil.error("1002","更新失败");
         return ResultUtil.success();
     }
 

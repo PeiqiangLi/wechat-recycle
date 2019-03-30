@@ -24,4 +24,14 @@ public class BannerServiceImpl implements BannerService {
         return bannerMapper.selectUseBanners();
     }
 
+    @Override
+    public int updateXuHao(Integer xuhao, Integer id) {
+        return bannerMapper.updateXuHao(xuhao, id);
+    }
+
+    @Override
+    public int updateBanner(Banner banner) {
+        return bannerMapper.updateBanner(banner);
+    }
+
 }

@@ -12,4 +12,27 @@
         select * from `banner` where del_flag = '1' ORDER BY xuhao
     </select>
 
+    <update id="updateBanner" parameterType="com.wechat.recycle.entity.Banner">
+        UPDATE banner
+        <set>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null">
+                img_url = #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER} AND del_flag != "0"
+    </update>
+
+    <update id="updateXuHao" parameterType="com.wechat.recycle.entity.Banner">
+        UPDATE banner
+        <set>
+            xuhao = #{xuhao,jdbcType=INTEGER},
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER} AND del_flag != "0"
+    </update>
+
 </mapper>
