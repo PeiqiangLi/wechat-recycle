@@ -36,7 +36,7 @@ public class BannerController {
         return ResultUtil.success();
     }
 
-    @RequestMapping(value = "/updateBanner", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateBanner", method = RequestMethod.POST)
     public Result updateBanner(@RequestBody Banner banner) {
         if (banner.getRemarks() == ""
                 || banner.getImgUrl() == "") {
