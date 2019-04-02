@@ -9,7 +9,12 @@
     </select>
 
     <select id="selectAll" resultType="com.wechat.recycle.entity.Article">
-        select * from article where del_flag !="0" and title like CONCAT('%',#{str,jdbcType=VARCHAR},'%') or introduction like CONCAT('%',#{str,jdbcType=VARCHAR},'%')
+        select * from article where del_flag !="0"
+        <if test="str !=null">
+            and title like CONCAT('%',#{str,jdbcType=VARCHAR},'%')
+            or introduction like CONCAT('%',#{str,jdbcType=VARCHAR},'%')
+        </if>
+        order by create_time desc
     </select>
 
     <insert id="addArticle" parameterType="com.wechat.recycle.entity.Article" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">

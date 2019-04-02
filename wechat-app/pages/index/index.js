@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pageNum: 1,
+    pageSize: 5,
     nocancel: true,
     imgUrls: [],
     img1: '/images/types/kuzi.png',
@@ -59,6 +61,20 @@ Page({
           imgUrls: img_url
         })
         //console.log(this.data.imgUrls);
+      }
+    })
+    wx.request({
+      url: app.globalData.url + '/article/getArticles',
+      data: {
+        pageNum: this.data.pageNum,
+        pageSize: this.data.pageSize
+      },
+      success: res => {
+        res = res.data
+        console.log(res.data);
+        this.setData({
+          article: res.data.list
+        })
       }
     })
     if (app.globalData.userInfo) {
@@ -163,20 +179,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.sessionId({
+      pageNum: 1,
+      pageSize: 5
+    })
     wx.request({
       url: app.globalData.url + '/article/getArticles',
+      data: {
+        pageNum: this.data.pageNum,
+        pageSize: this.data.pageSize
+      },
       success: res => {
         res = res.data
-        //console.log(res.data);
-        var img_url = new Array();
-        for (var index in res.data) {
-          img_url.push(res.data[index].imgUrl);
-          //this.data.imgUrls[index] = res.data[index].imgUrl
-        }
+        console.log(res.data);
         this.setData({
-          article: res.data
+          article: res.data.list
         })
-        //console.log(this.data.imgUrls);
       }
     })
     wx.stopPullDownRefresh()

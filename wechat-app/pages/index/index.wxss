@@ -125,3 +125,9 @@
   color: #999;
   width: 100%;
 }
+
+.article_con{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

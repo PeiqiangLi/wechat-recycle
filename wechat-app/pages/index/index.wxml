@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
 <view class='page'>
 
 <view class="modal-box" hidden='{{!(!hasUserInfo && canIUse)}}'>
@@ -71,30 +72,19 @@
   
   <view class='text_line'><text>精彩阅读</text></view>
 
-<block>
+<block wx:for="{{article}}" wx:key="id">
   <view class='article' bindtap='readArticle' data-id='{{item.id}}'>
-    <image src='http://106.14.177.245:8088/ziyuan/images/article/article1.png' class='article_img'></image>
+    <image src='{{item.cover}}' class='article_img'></image>
     <view class='article_title'>
-      <view>
-        <text class='article_line'>保护环境 人人有责！！！</text>
+      <view class='article_con'>
+        <text class='article_line'>{{item.title}}</text>
       </view>
-      <view>
-        <text class='article_content'>从身边的小事做起，节约利用资源。</text>
+      <view class='article_con'>
+        <text class='article_content'>{{filters.toTrim(item.introduction)}}</text>
       </view>
     </view>
   </view>
 </block>
-  <view class='article'>
-    <image src='http://106.14.177.245:8088/ziyuan/images/article/article1.png' class='article_img'></image>
-    <view class='article_title'>
-      <view>
-        <text class='article_line'>保护环境 人人有责！！！</text>
-      </view>
-      <view>
-        <text class='article_content'>从身边的小事做起，节约利用资源。</text>
-      </view>
-    </view>
-  </view>
   
 </view>
 
