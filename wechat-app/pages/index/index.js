@@ -26,6 +26,7 @@ Page({
     article: [],
     userInfo: {},
     hasUserInfo: false,
+    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //轮播图处理
@@ -106,9 +107,17 @@ Page({
           "iv": e.detail.iv
         },
         data: e.detail.userInfo,
-        success: res => {
+        success: res => {       
           res = res.data
           console.log(res);
+        },
+        fail: res => {
+          wx.showModal({
+            title: '警告',
+            content: '获取信息失败请重新进入小程序！！！',
+            showCancel: false,
+            confirmText: '确认'
+          })
         }
       })
       // 

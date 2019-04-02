@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/cart/cart",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/article/article",
+    "pages/message/message",
+    "pages/my/wallet"
   ],
   "permission": {
     "scope.userLocation": {
