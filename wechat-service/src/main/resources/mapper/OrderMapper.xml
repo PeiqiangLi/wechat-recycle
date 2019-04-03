@@ -57,11 +57,22 @@
     </update>
 
     <select id="getMinOrders" resultType="com.wechat.recycle.dto.OrderDTO">
-        SELECT *, 6378.137 * 2 * ASIN(SQRT(POW(SIN((#{latitude,jdbcType=DOUBLE}*PI()/180-latitude*PI()/180)/2),2)+COS(#{latitude,jdbcType=DOUBLE}*PI()/180)*COS(latitude*PI()/180)*POW(SIN((#{longitude,jdbcType=DOUBLE}*PI()/180-longitude*PI()/180)/2),2)))
+        SELECT `order`.*,distance FROM
+        (SELECT address.id, 6378.137 * 2 * ASIN(SQRT(POW(SIN((#{latitude,jdbcType=DOUBLE}*PI()/180-latitude*PI()/180)/2),2)+COS(#{latitude,jdbcType=DOUBLE}*PI()/180)*COS(latitude*PI()/180)*POW(SIN((#{longitude,jdbcType=DOUBLE}*PI()/180-longitude*PI()/180)/2),2)))
          AS distance
          FROM Address
-         WHERE del_flag = "2"
-         ORDER BY distance ASC limit 1
+         WHERE del_flag = "1"
+        <if test="province != null and province != ''">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != ''">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null and area != ''">
+            and area = #{area,jdbcType=VARCHAR}
+        </if>
+        ORDER BY distance ASC limit 1) a ,`order`
+        WHERE distance &lt; 5 AND `order`.address_id = a.id AND `order`.del_flag != "0" ORDER BY distance
     </select>
 
 </mapper>

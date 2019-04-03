@@ -22,7 +22,7 @@ public final class FileHandleUtil {
     private static String absolutePath = "";
 
     /** 静态目录 **/
-    private static String staticDir = "static";
+    private static String staticDir = "/static";
 
     /** 文件存放的目录 **/
     private static String fileDir = "/images/";

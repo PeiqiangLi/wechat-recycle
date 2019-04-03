@@ -101,4 +101,13 @@ public class OrderController {
         return ResultUtil.error(StatusCodeEnum.FAILED);
     }
 
+    @RequestMapping(value = "/getMinOrders", method = RequestMethod.GET)
+    public Result getMinOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String district) {
+        if (latitude == null || longitude == null) {
+            return ResultUtil.error("1003","经纬度为空！");
+        }
+        PageInfo<OrderDTO> orders = orderService.getMinOrders(pageNum, pageSize, latitude, longitude, province, city, district);
+        return ResultUtil.pageResult(orders);
+    }
+
 }

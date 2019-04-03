@@ -17,4 +17,6 @@ public interface OrderService {
 
     int deleteOne(Integer id);
 
+    PageInfo<OrderDTO> getMinOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String area);
+
 }

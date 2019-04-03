@@ -30,4 +30,6 @@ public interface OrderMapper {
 
     int deleteOne(@Param("id")Integer id);
 
+    List<OrderDTO> getMinOrders(@Param("latitude")Double latitude, @Param("longitude")Double longitude, @Param("province")String province, @Param("city")String city, @Param("area")String area);
+
 }

@@ -60,4 +60,11 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.deleteOne(id);
     }
 
+    @Override
+    public PageInfo<OrderDTO> getMinOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String area) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<OrderDTO> orders = orderMapper.getMinOrders(latitude,longitude,province,city,area);
+        return new PageInfo<>(orders);
+    }
+
 }
