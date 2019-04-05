@@ -61,7 +61,7 @@
       </navigator>
       <navigator url="../waste/waste?type=7" class='content-box'>
         <image src="{{img7}}" class='imgBox'>box3</image>
-        <view><text class='text-color'>报废汽车</text></view>
+        <view><text class='text-color'>报废车辆</text></view>
       </navigator>
       <navigator url="../waste/waste?type=0" class='content-box'>
         <image src="{{img8}}" class='imgBox'>box4</image>
