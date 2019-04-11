@@ -6,9 +6,13 @@ package com.wechat.recycle.common.utils;
  * @Date: Created in 14:26 2019/3/11
  * @Modify By:
  */
-public class DistanceUtil {
+public final class DistanceUtil {
 
-    private static final double EARTH_RADIUS = 6378.137;//地球半径,单位千米
+    private DistanceUtil() {
+
+    }
+
+    private static final double EARTH_RADIUS = 6371.393;//地球半径,单位千米
 
     private static double rad(double d)
     {

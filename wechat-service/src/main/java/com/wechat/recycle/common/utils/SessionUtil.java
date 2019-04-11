@@ -3,7 +3,6 @@ package com.wechat.recycle.common.utils;
 import com.alibaba.fastjson.JSONObject;
 import com.wechat.recycle.common.httpclient.HttpUtils;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

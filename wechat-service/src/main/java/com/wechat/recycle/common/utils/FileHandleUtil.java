@@ -61,7 +61,7 @@ public final class FileHandleUtil {
     private static void createDirIfNotExists() {
         if (!absolutePath.isEmpty()) {return;}
 
-        //获取跟目录
+        //获取根目录
         File file = null;
         try {
             file = new File(ResourceUtils.getURL("classpath:").getPath());
