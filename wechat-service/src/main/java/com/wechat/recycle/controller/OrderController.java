@@ -10,6 +10,7 @@ import com.wechat.recycle.entity.OrderType;
 import com.wechat.recycle.service.CartService;
 import com.wechat.recycle.service.OrderService;
 import com.wechat.recycle.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -69,6 +70,9 @@ public class OrderController {
         String openId =  jsonObject.getString("openId");
         int shu = 0;
         order.setCitId(openId);
+        if (StringUtils.isEmpty(order.getRemarks())) {
+            order.setRemarks("无");
+        }
         if (orderService.addOrder(order) > 0) {
             // 删除购物车
             int count = cartService.deleteSome(order.getOrderCart());
