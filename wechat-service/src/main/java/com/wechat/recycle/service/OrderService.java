@@ -19,4 +19,6 @@ public interface OrderService {
 
     PageInfo<OrderDTO> getMinOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String area);
 
+    PageInfo<OrderDTO> getOrders(Integer pageNum, Integer pageSize, String province, String city, String area);
+
 }

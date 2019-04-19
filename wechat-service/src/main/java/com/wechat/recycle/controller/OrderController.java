@@ -114,4 +114,9 @@ public class OrderController {
         return ResultUtil.pageResult(orders);
     }
 
+    public Result getPages(Integer pageNum, Integer pageSize, String province, String city, String district) {
+        PageInfo<OrderDTO> orders = orderService.getOrders(pageNum, pageSize, province, city, district);
+        return ResultUtil.pageResult(orders);
+    }
+
 }

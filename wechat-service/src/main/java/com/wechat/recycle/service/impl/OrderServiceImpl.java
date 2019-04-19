@@ -67,4 +67,12 @@ public class OrderServiceImpl implements OrderService {
         return new PageInfo<>(orders);
     }
 
+    @Override
+    public PageInfo<OrderDTO> getOrders(Integer pageNum, Integer pageSize, String province, String city, String area) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<OrderDTO> orders = orderMapper.getOrders(province,city,area);
+        PageInfo<OrderDTO> orderDTOPageInfo = new PageInfo<>(orders);
+        return orderDTOPageInfo;
+    }
+
 }

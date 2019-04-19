@@ -32,4 +32,6 @@ public interface OrderMapper {
 
     List<OrderDTO> getMinOrders(@Param("latitude")Double latitude, @Param("longitude")Double longitude, @Param("province")String province, @Param("city")String city, @Param("area")String area);
 
+    List<OrderDTO> getOrders(@Param("province")String province, @Param("city")String city, @Param("area")String area);
+    List<OrderDTO> getOrderabc();
 }
