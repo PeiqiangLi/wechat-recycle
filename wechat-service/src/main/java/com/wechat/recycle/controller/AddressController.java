@@ -38,6 +38,9 @@ public class AddressController {
         JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
         String openId =  jsonObject.getString("openId");
         User user = userService.selectByOpenid(openId);
+        if (user == null) {
+            return ResultUtil.error("1007","请重新授权小程序");
+        }
         if (user.getAddressId() != null){
             return ResultUtil.success(addressService.selectOne(user.getAddressId()));
         }

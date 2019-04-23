@@ -5,7 +5,8 @@
     "pages/my/my",
     "pages/article/article",
     "pages/message/message",
-    "pages/my/wallet"
+    "pages/my/wallet",
+    "pages/address/address"
   ],
   "permission": {
     "scope.userLocation": {
