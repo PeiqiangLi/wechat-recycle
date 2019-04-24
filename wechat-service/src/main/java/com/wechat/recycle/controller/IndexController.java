@@ -53,6 +53,24 @@ public class IndexController {
         return ResultUtil.success();
     }
 
+    @RequestMapping(value = "/getRecycler", method = RequestMethod.POST)
+    public Result getRecycler(@RequestBody User user, @RequestHeader String sessionId) {
+        // 从redis取出openId
+        JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
+        if (user.getNickName() == null || user.getAvatarUrl() == null || jsonObject == null){
+            return ResultUtil.error("1003", "获取授权新用户失败");
+        }
+        user.setOpenId(jsonObject.getString("openId"));
+
+        // 若用户已经存在数据库中
+        if (userService.selectByOpenid(jsonObject.getString("openId")) != null) {
+            return ResultUtil.success();
+        }
+        //未审核回收员,添加到后台审核
+        userService.addUser(user);
+        return ResultUtil.success();
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public Result login(String code, String sessionId) {
         //用户不存在或用户登录已经失效

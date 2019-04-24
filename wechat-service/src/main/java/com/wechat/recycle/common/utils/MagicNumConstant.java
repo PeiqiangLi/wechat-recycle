@@ -1,5 +1,5 @@
 /*
- * Project Name: k12-checkanswer-mqtt-account
+ * Project Name: k12-checkanswer-mqtt-Account
  * File Name: MagicNumConstant.java
  * Class Name: MagicNumConstant
  *

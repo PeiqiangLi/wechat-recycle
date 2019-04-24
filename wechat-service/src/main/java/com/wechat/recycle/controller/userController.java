@@ -31,6 +31,12 @@ public class userController {
         return ResultUtil.pageResult(userPageInfo);
     }
 
+    /**
+     * @Author: PeiqiangLi
+     * @Description: 审核回收员
+     * @param: openId, roleType
+     * @Date: 2019/4/24 11:15
+     */
     @RequestMapping(value = "/changeUserRole", method = RequestMethod.GET)
     public Result changeUserRole(String openId, String roleType) {
         User user = new User();

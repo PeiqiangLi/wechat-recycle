@@ -47,6 +47,24 @@
       select order_type.*, res_detail.name, res_detail.unit from order_type, res_detail where order_type.order_id = #{orderId} and order_type.waste_id = res_detail.id
     </select>
 
+    <select id="updateType" resultType="com.wechat.recycle.entity.OrderType">
+      UPDATE order_type
+        <set>
+            `count` = 2
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateOrder">
+        UPDATE `order`
+        <set>
+            orderState = 2,
+            #{money,jdbcType=DOUBLE},
+            update_time = NOW()
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
     <update id="deleteOne">
         UPDATE `order`
         <set>

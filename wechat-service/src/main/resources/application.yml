@@ -18,6 +18,8 @@ server:
     context-path: /ziyuan
   tomcat:
     uri-encoding: UTF-8
+#   配置HTTP header默认缓冲区大小（不推荐使用的配置属性）（单位B）Byte
+#   max-http-header-size: 8192
 
 mybatis:
 #  数据库映射实体类路径

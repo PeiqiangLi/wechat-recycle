@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.recycle.mapper.AccountMapper">
+
+    <select id="selectOne" resultType="com.wechat.recycle.entity.Account">
+      select * from account where open_id = #{openId}
+    </select>
+
+    <insert id="addAccount" useGeneratedKeys="true" keyProperty="id" keyColumn="id"
+            parameterType="com.wechat.recycle.entity.Account">
+        insert into account(open_id)
+        values (#{openId})
+    </insert>
+
+    <update id="updateAccount" parameterType="com.wechat.recycle.entity.Account">
+        UPDATE account
+        <set>
+            account = #{account,jdbcType=DOUBLE},
+            surplus = #{surplus,jdbcType=DOUBLE}
+        </set>
+        WHERE open_id = #{openId}
+    </update>
+
+</mapper>

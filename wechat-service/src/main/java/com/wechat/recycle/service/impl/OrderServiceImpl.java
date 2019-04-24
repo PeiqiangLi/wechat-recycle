@@ -61,6 +61,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public int updateOrder(Integer id, Double price) {
+        return orderMapper.updateOrder(id,price);
+    }
+
+    @Override
+    public void updateWaste(List<OrderType> typeList) {
+        for (OrderType orderType : typeList) {
+            orderMapper.updateType(orderType);
+        }
+    }
+
+    @Override
     public PageInfo<OrderDTO> getMinOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String area) {
         PageHelper.startPage(pageNum,pageSize);
         List<OrderDTO> orders = orderMapper.getMinOrders(latitude,longitude,province,city,area);

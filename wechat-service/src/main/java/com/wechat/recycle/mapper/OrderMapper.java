@@ -26,7 +26,9 @@ public interface OrderMapper {
 
     List<OrderTypeDTO> selectTypes(String orderId);
 
-//    int updateOrder(Order order);
+    int updateOrder(@Param("id")Integer id, @Param("money")Double money);
+
+    int updateType(OrderType orderType);
 
     int deleteOne(@Param("id")Integer id);
 
