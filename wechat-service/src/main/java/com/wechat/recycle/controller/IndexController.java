@@ -68,7 +68,8 @@ public class IndexController {
         }
         //未审核回收员,添加到后台审核
         userService.addUser(user);
-        return ResultUtil.success();
+        // 返回权限不足（未审核）
+        return ResultUtil.error(StatusCodeEnum.PERMISSION_DEFINED);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
