@@ -72,12 +72,30 @@ public class IndexController {
         return ResultUtil.error(StatusCodeEnum.PERMISSION_DEFINED);
     }
 
+    @RequestMapping(value = "/recyclerIn", method = RequestMethod.POST)
+    public Result recyclerIn(@RequestHeader String sessionId) {
+        // 从redis取出openId
+        JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
+
+        // 若用户已经存在数据库中
+        if (userService.selectByOpenid(jsonObject.getString("openId")) != null) {
+            return ResultUtil.success();
+        }
+        // 返回权限不足（未审核）
+        return ResultUtil.error(StatusCodeEnum.PERMISSION_DEFINED);
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public Result login(String code, String sessionId) {
+    public Result login(String code, String appid, String sessionId) {
         //用户不存在或用户登录已经失效
         if (StringUtils.isEmpty(sessionId) || redisUtil.get(sessionId) == null){
             //重新获取openid,sessionKey
-            JSONObject json = SessionUtil.getSessionKey(code);
+            JSONObject json = null;
+            if ("wxe6c90be5fd107bef".equals(appid)){
+                json = SessionUtil.getRecycleKey(code);
+            } else if ("wxbab581961ef84ef7".equals(appid)) {
+                json = SessionUtil.getSessionKey(code);
+            }
             if (json == null) {
                 return ResultUtil.error("1002","获取sessionKey失败");
             }

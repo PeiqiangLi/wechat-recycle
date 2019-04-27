@@ -5,10 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.common.utils.*;
 import com.wechat.recycle.dto.OrderDTO;
 import com.wechat.recycle.dto.WasteList;
-import com.wechat.recycle.entity.Account;
-import com.wechat.recycle.entity.Cart;
-import com.wechat.recycle.entity.Order;
-import com.wechat.recycle.entity.OrderType;
+import com.wechat.recycle.entity.*;
 import com.wechat.recycle.service.AccountService;
 import com.wechat.recycle.service.CartService;
 import com.wechat.recycle.service.OrderService;
@@ -45,6 +42,13 @@ public class OrderController {
         JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
         String openId =  jsonObject.getString("openId");
         PageInfo<Order> orders = orderService.selectOrders(pageNum, pageSize, openId);
+        return ResultUtil.pageResult(orders);
+    }
+
+    @RequestMapping(value = "/getResOrder", method = RequestMethod.GET)
+    public Result getResOrder(Integer pageNum, Integer pageSize, Integer orderState, Integer addressId) {
+
+        PageInfo<Order> orders = orderService.getResOrder(pageNum, pageSize, addressId, orderState);
         return ResultUtil.pageResult(orders);
     }
 

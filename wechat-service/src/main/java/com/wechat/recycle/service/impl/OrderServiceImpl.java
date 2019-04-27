@@ -41,6 +41,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public PageInfo<Order> getResOrder(Integer pageNum, Integer pageSize, Integer id, Integer orderState) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Order> orders = orderMapper.getResOrder(id, orderState);
+        return new PageInfo<>(orders);
+    }
+
+    @Override
     public int addOrder(Order order) {
         Address address = addressMapper.selectOne(order.getAddressId());
         AddressDTO addressDTO = addressMapper.getMinAddress(address.getLatitude(), address.getLongitude());

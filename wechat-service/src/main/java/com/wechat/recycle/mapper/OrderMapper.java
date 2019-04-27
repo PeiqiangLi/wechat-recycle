@@ -18,7 +18,9 @@ public interface OrderMapper {
 
     OrderDTO selectOne(Integer id);
 
-    List<Order> selectOrders(String openId);
+    List<Order> selectOrders(@Param("openId")String openId);
+
+    List<Order> getResOrder(@Param("id")Integer id, @Param("orderState")Integer orderState);
 
     int addOrder(Order order);
 

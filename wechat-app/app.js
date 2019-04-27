@@ -15,6 +15,7 @@ App({
             url: this.globalData.url + '/main/login',
             data: {
               code: res.code,
+              appid: "wxbab581961ef84ef7",
               sessionId: wx.getStorageSync('sessionId')
             },
             success: res => {

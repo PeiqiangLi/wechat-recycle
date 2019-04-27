@@ -9,7 +9,19 @@
     </select>
 
     <select id="selectOrders" resultType="com.wechat.recycle.entity.Order">
-      select * from `order` where cit_id = #{openId} and del_flag != "0" order by order_time desc
+      select * from `order` where cit_id = #{openId} and del_flag != "0"
+        <!--<if test="orderState != null and orderState != ''">-->
+            <!--and order_state = #{orderState,jdbcType=INTEGER}-->
+        <!--</if>-->
+      order by order_time desc
+    </select>
+
+    <select id="getResOrder" resultType="com.wechat.recycle.entity.Order">
+      select * from `order` where rec_id = #{id} and del_flag != "0"
+        <if test="orderState != null and orderState != ''">
+        and order_state = #{orderState,jdbcType=INTEGER}
+        </if>
+      order by order_time desc
     </select>
 
     <insert id="addOrder" parameterType="com.wechat.recycle.entity.Order" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
@@ -90,7 +102,7 @@
             and area = #{area,jdbcType=VARCHAR}
         </if>
         ORDER BY distance ASC limit 1) a ,`order`
-        WHERE distance &lt; 5 AND `order`.address_id = a.id AND `order`.del_flag != "0" ORDER BY distance
+        WHERE distance &lt; 5 AND `order`.address_id = a.id AND `order`.del_flag != "0" AND `order`.order_state = 1 ORDER BY distance
     </select>
 
     <!--<select id="getOrders" resultType="com.wechat.recycle.dto.OrderDTO" resultMap="orderTypeMap">-->

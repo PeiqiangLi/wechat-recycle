@@ -13,6 +13,8 @@ public interface OrderService {
 
     PageInfo<Order> selectOrders(Integer pageNum, Integer pageSize, String openId);
 
+    PageInfo<Order> getResOrder(Integer pageNum, Integer pageSize, Integer id, Integer orderState);
+
     int addOrder(Order order);
 
     int addOrderType(OrderType orderType);

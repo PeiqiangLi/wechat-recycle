@@ -40,4 +40,19 @@ public final class SessionUtil {
         return null;
     }
 
+    public static JSONObject getRecycleKey(String code) {
+        Map<String,String> map = new HashMap<>();
+        map.put("appid","wxe6c90be5fd107bef");
+        map.put("secret","c9cd08fdcf333aa124b2726c8b7101ae");
+        map.put("js_code",code);
+        map.put("grant_type","authorization_code");
+        try {
+            JSONObject json = JSONObject.parseObject(HttpUtils.doGet("https://api.weixin.qq.com/sns/jscode2session",map));
+            return json;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
