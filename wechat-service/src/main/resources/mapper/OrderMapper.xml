@@ -24,6 +24,26 @@
       order by order_time desc
     </select>
 
+    <select id="getResOrders" resultType="com.wechat.recycle.dto.OrderDTO">
+        select `order`.*, distance from `order`,
+        (select id, 6378.137 * 2 * ASIN(SQRT(POW(SIN((#{latitude,jdbcType=DOUBLE}*PI()/180-latitude*PI()/180)/2),2)+COS(#{latitude,jdbcType=DOUBLE}*PI()/180)*COS(latitude*PI()/180)*POW(SIN((#{longitude,jdbcType=DOUBLE}*PI()/180-longitude*PI()/180)/2),2)))
+        as distance
+        from address
+        where del_flag = "1"
+        <if test="province != null and province != ''">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != ''">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null and area != ''">
+            and area = #{area,jdbcType=VARCHAR}
+        </if>  ) as a
+        where a.id = `order`.address_id and rec_id = #{id} and `order`.del_flag != "0"
+        and order_state = 1
+        order by order_time desc
+    </select>
+
     <insert id="addOrder" parameterType="com.wechat.recycle.entity.Order" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
         INSERT INTO `order`
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -101,7 +121,7 @@
         <if test="area != null and area != ''">
             and area = #{area,jdbcType=VARCHAR}
         </if>
-        ORDER BY distance ASC limit 1) a ,`order`
+        ORDER BY distance ASC limit 10 ) a ,`order`
         WHERE distance &lt; 5 AND `order`.address_id = a.id AND `order`.del_flag != "0" AND `order`.order_state = 1 ORDER BY distance
     </select>
 

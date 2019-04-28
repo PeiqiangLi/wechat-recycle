@@ -16,4 +16,8 @@ public interface AccountMapper {
 
     int updateAccount(Account account);
 
+    int getOrderCount(Integer id);
+
+    double getOrderTotal(Integer id);
+
 }

@@ -15,6 +15,8 @@ public interface OrderService {
 
     PageInfo<Order> getResOrder(Integer pageNum, Integer pageSize, Integer id, Integer orderState);
 
+    PageInfo<OrderDTO> getResOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String area, Integer id);
+
     int addOrder(Order order);
 
     int addOrderType(OrderType orderType);

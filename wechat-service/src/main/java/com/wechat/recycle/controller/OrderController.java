@@ -52,6 +52,12 @@ public class OrderController {
         return ResultUtil.pageResult(orders);
     }
 
+    @RequestMapping(value = "/getResOrders", method = RequestMethod.GET)
+    public Result getResOrders(Integer pageNum, Integer pageSize,Double latitude,Double longitude,String province,String city,String area, Integer addressId) {
+        PageInfo<OrderDTO> orders = orderService.getResOrders(pageNum, pageSize,latitude,longitude,province,city,area,addressId);
+        return ResultUtil.pageResult(orders);
+    }
+
     @RequestMapping(value = "/getOrder", method = RequestMethod.GET)
     public Result getOrder(Integer orderId) {
         OrderDTO orderDTO = orderService.selectOne(orderId);

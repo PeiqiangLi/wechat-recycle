@@ -41,7 +41,7 @@ public class AddressController {
         if (user == null) {
             return ResultUtil.error("1007","请重新授权小程序");
         }
-        if (user.getAddressId() != null){
+        if (user.getAddressId() != null && user.getAddressId() != 0){
             return ResultUtil.success(addressService.selectOne(user.getAddressId()));
         }
 

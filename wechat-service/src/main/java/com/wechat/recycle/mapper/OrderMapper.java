@@ -22,6 +22,8 @@ public interface OrderMapper {
 
     List<Order> getResOrder(@Param("id")Integer id, @Param("orderState")Integer orderState);
 
+    List<OrderDTO> getResOrders(@Param("latitude")Double latitude, @Param("longitude")Double longitude, @Param("province")String province, @Param("city")String city, @Param("area")String area, @Param("id")Integer id);
+
     int addOrder(Order order);
 
     int addOrderType(OrderType orderType);

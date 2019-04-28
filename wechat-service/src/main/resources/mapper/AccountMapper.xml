@@ -23,4 +23,12 @@
         WHERE open_id = #{openId}
     </update>
 
+    <select id="getOrderCount" resultType="java.lang.Integer">
+      SELECT COUNT(*) FROM `order` WHERE rec_id = #{id} and order_state = 2 and del_flag != "0"
+    </select>
+
+    <select id="getOrderTotal" resultType="java.lang.Double">
+      SELECT SUM(money) FROM `order` WHERE rec_id = #{id} and order_state = 2 and del_flag != "0"
+    </select>
+
 </mapper>

@@ -36,4 +36,15 @@ public class AccountServiceImpl implements AccountService {
     public int updateAccount(Account account) {
         return accountMapper.updateAccount(account);
     }
+
+    @Override
+    public int getOrderCount(Integer id) {
+        return accountMapper.getOrderCount(id);
+    }
+
+    @Override
+    public double getOrderTotal(Integer id) {
+        return accountMapper.getOrderTotal(id);
+    }
+
 }

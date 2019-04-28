@@ -14,4 +14,8 @@ public interface AccountService {
 
     int updateAccount(Account account);
 
+    int getOrderCount(Integer id);
+
+    double getOrderTotal(Integer id);
+
 }

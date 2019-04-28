@@ -48,6 +48,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public PageInfo<OrderDTO> getResOrders(Integer pageNum, Integer pageSize, Double latitude, Double longitude, String province, String city, String area, Integer id) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<OrderDTO> orders = orderMapper.getResOrders(latitude,longitude,province,city,area,id);
+        return new PageInfo<>(orders);
+    }
+
+    @Override
     public int addOrder(Order order) {
         Address address = addressMapper.selectOne(order.getAddressId());
         AddressDTO addressDTO = addressMapper.getMinAddress(address.getLatitude(), address.getLongitude());
