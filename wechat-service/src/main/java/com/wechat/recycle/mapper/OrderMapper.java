@@ -30,7 +30,7 @@ public interface OrderMapper {
 
     List<OrderTypeDTO> selectTypes(String orderId);
 
-    int updateOrder(@Param("id")Integer id, @Param("money")Double money);
+    int updateOrder(@Param("id")Integer id, @Param("money")Double money, @Param("recId")Integer recId);
 
     int updateType(OrderType orderType);
 

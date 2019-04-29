@@ -18,6 +18,8 @@ public class WasteList {
 
     private Double price;
 
+    private Integer recId;
+
     public List<OrderType> getWasteList() {
         return wasteList;
     }
@@ -40,5 +42,13 @@ public class WasteList {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getRecId() {
+        return recId;
+    }
+
+    public void setRecId(Integer recId) {
+        this.recId = recId;
     }
 }

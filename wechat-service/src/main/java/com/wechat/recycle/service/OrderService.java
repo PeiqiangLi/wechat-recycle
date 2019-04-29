@@ -23,7 +23,7 @@ public interface OrderService {
 
     int deleteOne(Integer id);
 
-    int updateOrder(Integer id, Double price);
+    int updateOrder(Integer id, Double price, Integer recId);
 
     void updateWaste(List<OrderType> typeList);
 

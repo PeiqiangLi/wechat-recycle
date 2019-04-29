@@ -91,8 +91,8 @@ public class OrderController {
         String openId =  jsonObject.getString("openId");
 
         Account account = accountService.selectOne(openId);
-        // 更新订单金额、状态
-        orderService.updateOrder(wasteList.getOrderId(), wasteList.getPrice());
+        // 更新订单金额、状态、回收人员
+        orderService.updateOrder(wasteList.getOrderId(), wasteList.getPrice(), wasteList.getRecId());
         // 更新废品数量
         orderService.updateWaste(wasteList.getWasteList());
         account.setAccount(account.getAccount() + wasteList.getPrice());

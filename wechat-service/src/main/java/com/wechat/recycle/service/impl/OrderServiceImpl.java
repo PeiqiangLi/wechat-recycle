@@ -75,8 +75,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int updateOrder(Integer id, Double price) {
-        return orderMapper.updateOrder(id,price);
+    public int updateOrder(Integer id, Double price, Integer recId) {
+        return orderMapper.updateOrder(id,price,recId);
     }
 
     @Override
