@@ -76,7 +76,7 @@
     </insert>
 
     <select id="selectTypes" resultType="com.wechat.recycle.dto.OrderTypeDTO">
-      select order_type.*, res_detail.name, res_detail.unit from order_type, res_detail where order_type.order_id = #{orderId} and order_type.waste_id = res_detail.id
+      select order_type.*, res_detail.name, res_detail.unit, res_detail.price from order_type, res_detail where order_type.order_id = #{orderId} and order_type.waste_id = res_detail.id
     </select>
 
     <select id="updateType" resultType="com.wechat.recycle.entity.OrderType">

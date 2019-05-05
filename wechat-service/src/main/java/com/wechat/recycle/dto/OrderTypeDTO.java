@@ -10,6 +10,8 @@ public class OrderTypeDTO extends OrderType {
 
     private String unit;
 
+    private Double price;
+
     public String getName() {
         return name;
     }
@@ -24,5 +26,13 @@ public class OrderTypeDTO extends OrderType {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
