@@ -43,7 +43,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public double getOrderTotal(Integer id) {
+    public Double getOrderTotal(Integer id) {
         return accountMapper.getOrderTotal(id);
     }
 

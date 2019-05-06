@@ -6,10 +6,7 @@ import com.wechat.recycle.common.utils.*;
 import com.wechat.recycle.dto.OrderDTO;
 import com.wechat.recycle.dto.WasteList;
 import com.wechat.recycle.entity.*;
-import com.wechat.recycle.service.AccountService;
-import com.wechat.recycle.service.CartService;
-import com.wechat.recycle.service.OrderService;
-import com.wechat.recycle.service.UserService;
+import com.wechat.recycle.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +24,9 @@ public class OrderController {
 
     @Resource
     private CartService cartService;
+
+    @Resource
+    private AddressService addressService;
 
     @Resource
     private RedisUtil redisUtil;
@@ -101,6 +101,11 @@ public class OrderController {
         return ResultUtil.success();
     }
 
+    /**
+     * 生成 orderId
+     * @param sessionId
+     * @return
+     */
     @RequestMapping(value = "/getOrderId", method = RequestMethod.GET)
     public Result getOrderId(String sessionId) {
         if (!redisUtil.hasKey(sessionId)) {
@@ -173,6 +178,13 @@ public class OrderController {
         return ResultUtil.pageResult(orders);
     }
 
+    @RequestMapping(value = "/getOrderAddress", method = RequestMethod.GET)
+    public Result getOrderAddress(Integer orderId) {
+        OrderDTO orderDTO = orderService.selectOne(orderId);
+        Address address = addressService.selectOne(orderDTO.getAddressId());
+        return ResultUtil.success(address);
+    }
+
     /**
      * @Author: PeiqiangLi
      * @Description: 订单列表
@@ -183,5 +195,7 @@ public class OrderController {
         PageInfo<OrderDTO> orders = orderService.getOrders(pageNum, pageSize, province, city, district);
         return ResultUtil.pageResult(orders);
     }
+
+
 
 }

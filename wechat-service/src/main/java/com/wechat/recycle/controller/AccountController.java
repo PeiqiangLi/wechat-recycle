@@ -66,7 +66,8 @@ public class AccountController {
         }
         if (user.getAddressId() != null && user.getAddressId() != 0){
             int orderCount = accountService.getOrderCount(user.getAddressId());
-            double orderTotal = accountService.getOrderTotal(user.getAddressId());
+            Double orderTotal = accountService.getOrderTotal(user.getAddressId());
+            if (orderTotal == null) orderTotal = 0.00;
             Map map = new HashMap();
             map.put("orderCount",orderCount);
             map.put("orderTotal",orderTotal);

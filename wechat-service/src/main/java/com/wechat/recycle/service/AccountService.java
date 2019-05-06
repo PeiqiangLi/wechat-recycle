@@ -16,6 +16,6 @@ public interface AccountService {
 
     int getOrderCount(Integer id);
 
-    double getOrderTotal(Integer id);
+    Double getOrderTotal(Integer id);
 
 }

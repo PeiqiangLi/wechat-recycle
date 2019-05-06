@@ -18,6 +18,6 @@ public interface AccountMapper {
 
     int getOrderCount(Integer id);
 
-    double getOrderTotal(Integer id);
+    Double getOrderTotal(Integer id);
 
 }
