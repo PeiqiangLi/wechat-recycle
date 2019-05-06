@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 /**
  * @Author: PeiqiangLi
- * @Description:
+ * @Description: java提供精确计算
  * @Date: Created in 10:49 2019/5/5
  * @Modify By:
  */
@@ -14,7 +14,7 @@ public final class CalculateUtil {
 
     }
 
-    //默认除法运算精度
+    //默认除法运算精度(保留小数位数)
     private static final int DEFAULT_DIV_SCALE = 10;
 
     /**

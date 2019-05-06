@@ -16,6 +16,8 @@ public interface AddressMapper {
 
     Address selectOne(@Param("id")Integer id);
 
+    Address selectByOrder(@Param("id")Integer id);
+
     int addAddress(Address address);
 
     int updateAddress(Address address);

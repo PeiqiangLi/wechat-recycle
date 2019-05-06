@@ -2,6 +2,7 @@ package com.wechat.recycle.service;
 
 import com.github.pagehelper.PageInfo;
 import com.wechat.recycle.entity.Address;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author: PeiqiangLi
@@ -12,6 +13,8 @@ import com.wechat.recycle.entity.Address;
 public interface AddressService {
 
     Address selectOne(Integer id);
+
+    Address selectByOrder(Integer id);
 
     int addAddress(Address address);
 

@@ -28,6 +28,17 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    public Address selectByOrder(Integer id) {
+        return addressMapper.selectByOrder(id);
+    }
+
+    /**
+     * @Author: PeiqiangLi
+     * @Description: 新增收货地址
+     * @param:
+     * @Date: 2019/5/6 15:03
+     */
+    @Override
     public int addAddress(Address address) {
         addressMapper.addAddress(address);
         // 返回地址id

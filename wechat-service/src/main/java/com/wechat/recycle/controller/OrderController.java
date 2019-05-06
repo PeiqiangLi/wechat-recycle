@@ -178,10 +178,22 @@ public class OrderController {
         return ResultUtil.pageResult(orders);
     }
 
+    /**
+     * @Author: PeiqiangLi
+     * @Description: 根据订单id获取经纬度
+     * @param:
+     * @Date: 2019/5/6 10:28
+     */
+//    @RequestMapping(value = "/getOrderAddress", method = RequestMethod.GET)
+//    public Result getOrderAddress(Integer orderId) {
+//        OrderDTO orderDTO = orderService.selectOne(orderId);
+//        Address address = addressService.selectOne(orderDTO.getAddressId());
+//        return ResultUtil.success(address);
+//    }
+
     @RequestMapping(value = "/getOrderAddress", method = RequestMethod.GET)
     public Result getOrderAddress(Integer orderId) {
-        OrderDTO orderDTO = orderService.selectOne(orderId);
-        Address address = addressService.selectOne(orderDTO.getAddressId());
+        Address address = addressService.selectByOrder(orderId);
         return ResultUtil.success(address);
     }
 
