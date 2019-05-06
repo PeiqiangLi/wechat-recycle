@@ -11,7 +11,7 @@
     <select id="selectByOrder" resultType="com.wechat.recycle.entity.Address">
         select address.id, address.real_name, address.mobile, address.latitude, address.longitude
         from address,`order`
-        where address.id = `order`.address_id and `order`.address_id = #{id}
+        where address.id = `order`.address_id and `order`.id = #{id}
     </select>
 
     <select id="selectAllAddress" resultType="com.wechat.recycle.entity.Address">
