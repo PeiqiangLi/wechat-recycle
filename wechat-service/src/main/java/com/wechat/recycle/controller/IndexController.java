@@ -75,11 +75,13 @@ public class IndexController {
     @RequestMapping(value = "/recyclerIn", method = RequestMethod.POST)
     public Result recyclerIn(@RequestHeader String sessionId) {
         // 从redis取出openId
-        JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
+        if (redisUtil.get(sessionId) != null) {
+            JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
 
-        // 若用户已经存在数据库中
-        if (userService.selectByOpenid(jsonObject.getString("openId")) != null) {
-            return ResultUtil.success();
+            // 若用户已经存在数据库中
+            if (userService.selectByOpenid(jsonObject.getString("openId")) != null) {
+                return ResultUtil.success();
+            }
         }
         // 返回权限不足（未审核）
         return ResultUtil.error(StatusCodeEnum.PERMISSION_DEFINED);

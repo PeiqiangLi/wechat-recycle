@@ -23,11 +23,13 @@ public class AccountServiceImpl implements AccountService {
     public Account selectOne(String openId) {
         Account account = accountMapper.selectOne(openId);
         if (account == null) {
-            account.setOpenId(openId);
-            account.setAccount(0.00);
-            account.setSurplus(0.00);
-            account.setExtract(0.00);
+            Account account1 = new Account();
+            account1.setOpenId(openId);
+            account1.setAccount(0.00);
+            account1.setSurplus(0.00);
+            account1.setExtract(0.00);
             accountMapper.addAccount(openId);
+            return account1;
         }
         return account;
     }

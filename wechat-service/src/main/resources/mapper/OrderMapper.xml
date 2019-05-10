@@ -82,7 +82,7 @@
     <select id="updateType" resultType="com.wechat.recycle.entity.OrderType">
       UPDATE order_type
         <set>
-            `count` = 2
+            `count` = #{count,jdbcType=DOUBLE}
         </set>
         WHERE id = #{id,jdbcType=INTEGER}
     </select>
@@ -90,7 +90,7 @@
     <update id="updateOrder">
         UPDATE `order`
         <set>
-            orderState = 2,
+            order_state = 2,
             money = #{money,jdbcType=DOUBLE},
             rec_id = #{recId,jdbcType=DOUBLE},
             update_time = NOW()

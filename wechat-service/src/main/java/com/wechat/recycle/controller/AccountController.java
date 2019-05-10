@@ -36,6 +36,17 @@ public class AccountController {
     @Resource
     private RedisUtil redisUtil;
 
+//    @RequestMapping(value = "/getAccount", method = RequestMethod.GET)
+//    public Result getAccount(String sessionId) {
+//        if (!redisUtil.hasKey(sessionId)) {
+//            return ResultUtil.error(StatusCodeEnum.USER_UNLOGIN);
+//        }
+//        JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
+//        String openId =  jsonObject.getString("openId");
+//        Account account = accountService.selectOne(openId);
+//        return ResultUtil.success(account);
+//    }
+
     @RequestMapping(value = "/getAccount", method = RequestMethod.GET)
     public Result getAccount(String sessionId) {
         if (!redisUtil.hasKey(sessionId)) {

@@ -32,7 +32,7 @@ public interface OrderMapper {
 
     int updateOrder(@Param("id")Integer id, @Param("money")Double money, @Param("recId")Integer recId);
 
-    int updateType(OrderType orderType);
+    Integer updateType(OrderType orderType);
 
     int deleteOne(@Param("id")Integer id);
 

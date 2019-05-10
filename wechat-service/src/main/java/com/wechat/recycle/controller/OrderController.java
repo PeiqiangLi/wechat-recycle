@@ -46,9 +46,14 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/getResOrder", method = RequestMethod.GET)
-    public Result getResOrder(Integer pageNum, Integer pageSize, Integer orderState, Integer addressId) {
-
-        PageInfo<Order> orders = orderService.getResOrder(pageNum, pageSize, addressId, orderState);
+    public Result getResOrder(Integer pageNum, Integer pageSize, Integer orderState, String sessionId) {
+        if (!redisUtil.hasKey(sessionId)) {
+            return ResultUtil.error(StatusCodeEnum.USER_UNLOGIN);
+        }
+        JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
+        String openId =  jsonObject.getString("openId");
+        User user = userService.selectByOpenid(openId);
+        PageInfo<Order> orders = orderService.getResOrder(pageNum, pageSize, user.getAddressId(), orderState);
         return ResultUtil.pageResult(orders);
     }
 
@@ -89,10 +94,10 @@ public class OrderController {
         }
         JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
         String openId =  jsonObject.getString("openId");
-
+        User user = userService.selectByOpenid(openId);
         Account account = accountService.selectOne(openId);
         // 更新订单金额、状态、回收人员
-        orderService.updateOrder(wasteList.getOrderId(), wasteList.getPrice(), wasteList.getRecId());
+        orderService.updateOrder(wasteList.getOrderId(), wasteList.getPrice(), user.getAddressId());
         // 更新废品数量
         orderService.updateWaste(wasteList.getWasteList());
         account.setAccount(account.getAccount() + wasteList.getPrice());
