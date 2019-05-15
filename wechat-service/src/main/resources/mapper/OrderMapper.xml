@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wechat.recycle.mapper.OrderMapper">
 
+    <select id="selectCitId" resultType="java.lang.String">
+      select cit_id from `order` where `order`.id = #{id}
+    </select>
+
     <select id="selectOne" resultType="com.wechat.recycle.dto.OrderDTO">
       select `order`.*, address.real_name, address.mobile, address.address from `order`, address where `order`.id = #{id} and `order`.address_id = address.id
     </select>

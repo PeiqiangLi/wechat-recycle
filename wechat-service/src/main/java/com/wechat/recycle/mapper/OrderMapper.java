@@ -16,6 +16,8 @@ import java.util.List;
  */
 public interface OrderMapper {
 
+    String selectCitId(Integer id);
+
     OrderDTO selectOne(Integer id);
 
     List<Order> selectOrders(@Param("openId")String openId);
@@ -39,5 +41,6 @@ public interface OrderMapper {
     List<OrderDTO> getMinOrders(@Param("latitude")Double latitude, @Param("longitude")Double longitude, @Param("province")String province, @Param("city")String city, @Param("area")String area);
 
     List<OrderDTO> getOrders(@Param("province")String province, @Param("city")String city, @Param("area")String area);
+
     List<OrderDTO> getOrderabc();
 }

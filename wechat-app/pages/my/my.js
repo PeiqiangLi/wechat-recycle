@@ -11,7 +11,8 @@ Page({
     icon1: '/images/myCenter/dianpu.png',
     icon2: '/images/myCenter/qianbao.png',
     icon3: '/images/myCenter/ditudingwei.png',
-    icon4: '/images/myCenter/yiduiqian.png'
+    icon4: '/images/myCenter/yiduiqian.png',
+    icon5: '/images/myCenter/dianzan.png'
   },
 
   /**

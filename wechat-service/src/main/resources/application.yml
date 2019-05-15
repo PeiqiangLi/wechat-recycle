@@ -37,3 +37,4 @@ pagehelper:
 jasypt:
   encryptor:
     password: EbfYkitulv73I2p0mXI50JMCoaxZTPJ7
+    stringOutputType: base64

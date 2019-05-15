@@ -6,7 +6,8 @@
     "pages/article/article",
     "pages/message/message",
     "pages/my/wallet",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/order/order_list"
   ],
   "permission": {
     "scope.userLocation": {
@@ -47,5 +48,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

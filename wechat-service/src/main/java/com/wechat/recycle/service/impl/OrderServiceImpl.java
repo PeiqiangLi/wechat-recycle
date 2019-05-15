@@ -26,6 +26,11 @@ public class OrderServiceImpl implements OrderService {
     private AddressMapper addressMapper;
 
     @Override
+    public String selectCitId(Integer id) {
+        return orderMapper.selectCitId(id);
+    }
+
+    @Override
     public OrderDTO selectOne(Integer id) {
         OrderDTO orderDTO = orderMapper.selectOne(id);
         List<OrderTypeDTO> orderTypeDTOS = orderMapper.selectTypes(orderDTO.getOrderId());

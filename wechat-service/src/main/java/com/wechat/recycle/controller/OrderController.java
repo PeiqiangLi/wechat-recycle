@@ -95,7 +95,10 @@ public class OrderController {
         JSONObject jsonObject = JSONObject.parseObject(redisUtil.get(sessionId).toString());
         String openId =  jsonObject.getString("openId");
         User user = userService.selectByOpenid(openId);
-        Account account = accountService.selectOne(openId);
+
+        // 找到订单对应的账户
+        String citId = orderService.selectCitId(wasteList.getOrderId());
+        Account account = accountService.selectOne(citId);
         // 更新订单金额、状态、回收人员
         orderService.updateOrder(wasteList.getOrderId(), wasteList.getPrice(), user.getAddressId());
         // 更新废品数量

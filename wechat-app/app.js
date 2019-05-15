@@ -65,6 +65,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    url: "http://106.14.177.245:8088/ziyuan"
+    // url: "http://106.14.177.245:8088/ziyuan"
+    url: "http://localhost:8088/ziyuan"
   }
 })

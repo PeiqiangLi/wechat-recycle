@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface OrderService {
 
+    String selectCitId(Integer id);
+
     OrderDTO selectOne(Integer id);
 
     PageInfo<Order> selectOrders(Integer pageNum, Integer pageSize, String openId);
