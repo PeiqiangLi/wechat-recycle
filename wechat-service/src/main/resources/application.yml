@@ -12,6 +12,15 @@ spring:
 #  resources:
 #    static-locations: classpath:static/,file:static/
 
+#  设置响应为utf-8
+  http:
+    encoding:
+      force-response: true
+
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#  druid:
+
 server:
   port: 8088
   servlet:
@@ -28,11 +37,15 @@ mybatis:
   configuration:
 #    开启驼峰映射
     map-underscore-to-camel-case: true
+#    默认全局执行sql超时时间25秒，更细粒度请在具体方法上配置，单位秒
+    default-statement-timeout: 25
 
 pagehelper:
   helperDialect: mysql
   reasonable: false
   pageSizeZero: true
+  supportMethodsArguments: true
+  params: count=countSql;pageNum=pageNum;pageSize=pageSize;
 
 jasypt:
   encryptor:
